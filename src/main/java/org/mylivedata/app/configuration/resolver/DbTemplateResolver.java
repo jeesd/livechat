@@ -26,7 +26,7 @@ public class DbTemplateResolver extends TemplateResolver {
     private final static String PREFIX_TYPE_HTML = "html:";
     private final static String PREFIX_TYPE_CSS = "css:";
     
-    @Autowired
+    //@Autowired
     private LayoutService layoutService;
 
     public DbTemplateResolver() {
