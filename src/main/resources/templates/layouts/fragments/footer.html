@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+    <title>Header</title>
+
+</head>
+
+<body layout:fragment="footer">
+
+<a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
+
+<!-- Logout confirmation -->
+<div class="custom-popup width-100" id="logoutConfirm">
+    <div class="padding-md">
+        <h4 class="m-top-none"> Do you want to logout?</h4>
+    </div>
+
+    <div class="text-center">
+        <a class="btn btn-success m-right-sm" href="#">Logout</a>
+        <a class="btn btn-danger logoutConfirm_close">Cancel</a>
+    </div>
+</div>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- Require -->
+<script src="js/require.js" th:src="@{/js/templatejs/require.js}"></script>
+
+<!--Page custom script-->
+<script src="js/dashboard/dashboard.js" th:src="@{/js/dashboard/dashboard.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/error">
+<head>
+
+    <title th:text="${errMsg}">Custom error</title>
+
+</head>
+
+<body>
+
+    <div class="h5" layout:fragment="error-message" th:text="${errMsg}">Error Message</div>
+
+    <a layout:fragment="error-link" class="btn btn-success m-bottom-sm" th:href="${returnUrl}">
+        <i class="fa fa-home"></i>
+        <th:block th:text="#{error.back.dashboard}">Go Back</th:block>
+    </a>
+
+</body>
+</html>

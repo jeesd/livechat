@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/basic">
+<head>
+
+    <title th:text="#{register.title}">Registration</title>
+
+</head>
+
+<body>
+
+    <div class="login-widget animation-delay1" layout:fragment="content">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-plus-circle fa-lg"></i> <th:block th:text="#{register.signup}">Sign up</th:block>
+            </div>
+            <div class="panel-body">
+                <form id="sing-up-registration-form" class="form-login" action="/signup" th:action="@{/signup}" th:object="${registrationFormDataView}" method="post" role="form">
+                    <div class="form-group">
+                        <label th:text="#{global.username}">Username</label>
+                        <input th:field="*{name}" th:placeholder="#{global.username}" placeholder="Username"
+                        	   th:value="*{name}"
+                        	   class="form-control input-sm bounceIn animation-delay2" />
+                    </div><!-- /form-group -->
+
+                        <div class="form-group" th:classappend="${#fields.hasErrors('email')}?has-error">
+                            <label th:text="#{global.email}">Email Address</label>
+                            <input type="text" th:field="*{email}"
+                                   th:placeholder="#{global.email}"
+                                   th:attr="data-placement=${#fields.hasErrors('email')}?right,data-content=${#fields.hasErrors('email')}?${#fields.errors('email')},data-container=${#fields.hasErrors('email')}?body,data-toggle=${#fields.hasErrors('email')}?popover,data-trigger=${#fields.hasErrors('email')}?focus"
+                                   class="form-control input-sm bounceIn animation-delay5" />
+
+                            <!-- th:classappend="${#fields.hasErrors('email')?'has-error'}"
+                            th:attr="#fields.hasErrors('email')?(data-placement='right',data-content=#fields.errors('email'),data-container='body',data-toggle='popover',data-trigger='focus')"
+                            <c:choose>
+                                <c:when test="${status.error}">
+                                    <input id="email" name="email" type="text"
+                                           data-placement="right" data-content="<c:out value="${status.errorMessage}"/>" data-container="body" data-toggle="popover" data-trigger="focus"
+                                           placeholder="<c:out value="${status.errorMessage}"/>" class="form-control input-sm bounceIn animation-delay5" value="<c:out value="${status.value}"/>">
+                                </c:when>
+                                <c:otherwise>
+                                    <input id="email" name="email" type="text" placeholder="<spring:message code="global.email" text="Email Address"/>"
+                                           value="<c:out value="${status.value}"/>" class="form-control input-sm bounceIn animation-delay5">
+                                </c:otherwise>
+                            </c:choose>
+                            th:classappend="${#fields.hasErrors('agreement')?'has-error'}"
+                            <input th:field="*{agreement}" type="checkbox" />
+                             -->
+                        </div><!-- /form-group  -->
+                    <div class="form-group" th:if="${#fields.hasErrors('email')}">
+                        <div class="alert alert-danger" th:errors="*{email}">
+                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                        </div>
+                    </div>
+                    <div class="form-group" th:classappend="${#fields.hasErrors('agreement')}?has-error">
+                        <label th:for="${#ids.next('agreement')}" class="label-checkbox">
+
+                            <input type="checkbox" th:id="${#ids.next('agreement')}" name="agreement" th:checked="${registrationFormDataView.agreement==true}?checked"/>
+                            <span class="custom-checkbox info bounceIn animation-delay6"></span>
+                            <th:block th:text="#{register.agreement}">I accept the agreement.</th:block>
+                            <input type="hidden" name="_agreement" value="on"/>
+                        </label>
+                    </div><!-- /form-group -->
+                    <div class="form-group" th:if="${#fields.hasErrors('agreement')}">
+                        <div class="alert alert-danger" th:errors="*{agreement}">
+                            <strong>Oh snap!</strong> You have to confirm agreement.
+                        </div>
+                    </div>
+
+                    <div class="seperator"></div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <th:block th:text="#{register.accountalready}">Already have an account?</th:block>
+                            <a href="signin" class="primary-font login-link" th:text="#{global.signin}">
+                                Sign In
+                            </a>
+                        </div>
+                    </div><!-- /form-group -->
+
+                    <hr/>
+                    <div class="form-group">
+                        <div class="controls text-right">
+                            <a id="singupsubmit" class="btn btn-success btn-sm bounceIn animation-delay7 login-link" >
+                                <i class="fa fa-plus-circle"></i>
+                                <th:block th:text="#{register.signup}">Sign up</th:block>
+                            </a>
+                        </div>
+                    </div><!-- /form-group -->
+                </form>
+            </div>
+        </div><!-- /panel -->
+    </div><!-- /login-widget -->
+
+    <th:block layout:fragment="page-modal">
+    <!-- jquery popup overlay -->
+    <div class="custom-popup width-100" id="darkCustomModal" style="visibility: hidden;">
+        <div class="padding-md">
+            <h4 class="m-top-none">
+                <c:if test="${message == 'userAlreadyExist'}">
+                    <th:block th:text="#{register.exist}">User with this email already registered! Foget password?</th:block>
+                    <a href="/password/reset" th:href="@{/password/reset}" class="primary-font login-link" th:text="#{register.clickhere}">
+                        Click here
+                    </a>
+                </c:if>
+            </h4>
+        </div>
+
+        <div class="text-center">
+            <a href="/signup" th:href="@{/signup}" class="btn btn-danger darkCustomModal_close" th:text="#{register.tryagain}">
+                Try Again
+            </a>
+        </div>
+    </div>
+
+    <div class="custom-popup light width-100" id="lightCustomModal" style="visibility: hidden;">
+        <div class="padding-md">
+            <h4 class="m-top-none" th:text="#{signup.registered}">
+                 Successfuly registered. Now you can log in.
+            </h4>
+        </div>
+
+        <div class="text-center">
+            <a href="/signin" th:href="@{/signin}" class="btn btn-success m-right-sm" th:text="#{global.signin}">
+                Sign in
+            </a>
+        </div>
+    </div>
+    </th:block>
+
+    <th:block layout:fragment="page-scripts">
+        <!--Page custom script-->
+        <script src="js/pagejs/register.js"></script>
+
+        <script th:if="${message == 'registered'}">
+            $(function() {
+                $('#lightCustomModal').popup('show');
+            });
+        </script>
+
+        <script th:if="${message == 'userAlreadyExist'}">
+            $(function() {
+                $('#darkCustomModal').popup('show');
+            });
+        </script>
+    </th:block>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboard">
+<head>
+
+    <title th:text="#{global.application}">Configurations</title>
+
+    <!-- Wysihtml5 -->
+    <link layout:fragment="page-header" href="css/bootstrap3-wysihtml5.css" th:href="@{css/bootstrap-wysihtml5.css}" rel="stylesheet" />
+
+</head>
+
+<body class="overflow-hidden">
+
+    <li class="active" layout:fragment="active-page-name"> Configurations</li>
+    <!-- breadcrumb -->
+    <div id="main-content" layout:fragment="page-main-content">
+        <div class="panel-body">
+            <form id="formToggleLine" class="form-horizontal no-margin form-border">
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">WYSIHTML5</label>
+                    <div class="col-lg-10">
+                        <textarea id="wysihtml5-textarea" placeholder="Enter your text ..." class="form-control" rows="6"></textarea>
+                    </div><!-- /.col -->
+                </div><!-- /form-group -->
+
+            </form>
+        </div>
+
+    </div><!-- /main-content -->
+
+
+
+</body>
+</html>
+

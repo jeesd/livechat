@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboard">
+<head>
+
+    <title th:text="#{global.application}">My Dashboard</title>
+
+</head>
+<body class="overflow-hidden">
+
+    <li class="active" layout:fragment="active-page-name"> Visitor List</li>
+    <!-- breadcrumb -->
+    <div id="main-container" layout:fragment="page-main-content">
+            <div class="panel panel-default table-responsive">
+                <div class="panel-heading">
+                    Visitors
+                    <span class="label label-info pull-right" id="dataTablelabel">790 Items</span>
+                </div>
+                <div class="padding-md clearfix">
+                    <table class="table table-striped" id="dataTable">
+                        <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>IP</th>
+                            <th>Browser</th>
+                            <th>System</th>
+                            <th>Country Code</th>
+                            <th>Country Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.padding-md -->
+            </div><!-- /panel -->
+    </div><!-- /main-container -->
+
+</body>
+</html>
+

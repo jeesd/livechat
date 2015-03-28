@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/basic">
+<head>
+
+    <title th:text="#{register.title}">Registration</title>
+
+</head>
+
+<body>
+
+    <div class="login-widget animation-delay1" layout:fragment="content">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-plus-circle fa-lg"></i>
+                <th:block th:text="#{confirm.title}">Your account where confirmed now create password and go to dashboard</th:block>
+            </div>
+            <div class="panel-body">
+                <form id="confirm-registration-form" class="form-login" th:action="@{/confirm}" th:object="${createUserFormDataView}" method="post" role="form">
+                    <div class="form-group" th:classappend="${#fields.hasErrors('password')}?has-error">
+                        <label th:text="#{global.password}">Password</label>
+                            <input type="text" th:field="*{password}"
+                                   th:placeholder="#{global.password}"
+                                   th:attr="data-placement=${#fields.hasErrors('password')}?right,data-content=${#fields.hasErrors('password')}?${#fields.errors('password')},data-container=${#fields.hasErrors('password')}?body,data-toggle=${#fields.hasErrors('password')}?popover,data-trigger=${#fields.hasErrors('password')}?focus"
+                                   class="form-control input-sm bounceIn animation-delay5" />
+                    </div><!-- /form-group -->
+                    <div class="form-group" th:if="${#fields.hasErrors('password')}">
+                        <div class="alert alert-danger" th:errors="*{password}">
+                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                        </div>
+                    </div><!-- /form-group -->
+                    <div class='form-group' th:classappend="${#fields.hasErrors('cofirmpassword')}?has-error">
+                        <label th:text="#{global.cofirmpassword}">Confirm Password</label>
+                        <input type="text" th:field="*{confirmPassword}"
+                               th:placeholder="#{global.confirmPassword}"
+                               th:attr="data-placement=${#fields.hasErrors('confirmPassword')}?right,data-content=${#fields.hasErrors('confirmPassword')}?${#fields.errors('confirmPassword')},data-container=${#fields.hasErrors('confirmPassword')}?body,data-toggle=${#fields.hasErrors('confirmPassword')}?popover,data-trigger=${#fields.hasErrors('confirmPassword')}?focus"
+                               class="form-control input-sm bounceIn animation-delay5" />
+                    </div> <!-- /form-group -->
+                    <div class="form-group" th:if="${#fields.hasErrors('confirmPassword')}">
+                        <div class="alert alert-danger" th:errors="*{confirmPassword}">
+                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                        </div>
+                    </div><!-- /form-group -->
+                    <div class="seperator"></div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <th:block th:text="#{Size.createUserFormDataView.password}">Your password must be at least 8 characters long and contain lowercase letters, uppercase letters and numbers.</th:block>
+                            <div class="seperator"></div>
+                            <th:block th:text="#{register.accountalready}">Already have an account?</th:block>
+                            <a href="signin" class="primary-font login-link" th:text="#{global.signin}">
+                                Sign In
+                            </a>
+                        </div>
+                    </div><!-- /form-group -->
+                    <hr/>
+                    <div class="form-group">
+                        <div class="controls text-right">
+                            <a id="confirmsubmit" class="btn btn-success btn-sm bounceIn animation-delay7 login-link" >
+                                <i class="fa fa-plus-circle"></i>
+                                <th:block th:text="#{confirm.page.gotodashboard}">Save and Go to Dashboard</th:block>
+                            </a>
+                        </div>
+                    </div><!-- /form-group -->
+                </form>
+            </div>
+        </div><!-- /panel -->
+    </div><!-- /login-widget -->
+
+    <!-- jquery popup overlay -->
+    <div layout:include="layouts/light_modal :: modal"  layout:fragment="page-modal" th:remove="tag" th:if="${message != null}" >
+        <h4 layout:fragment="modal-content" th:text="#{signup.registered}">Successfuly registered. Now you can log in.</h4>
+    </div>
+
+    <!--Page custom script-->
+    <th:block layout:fragment="page-scripts">
+        <script src="/js/pagejs/confirm.js" th:src="@{/js/pagejs/confirm.js}" ></script>
+
+        <script th:if="${message != null}">
+            $(function() {
+                $('#lightCustomModal').popup('show');
+            });
+        </script>
+    </th:block>
+
+</body>
+</html>
+

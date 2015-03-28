@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+    <title>Header</title>
+
+</head>
+
+<body layout:fragment="left-nav">
+
+<aside class="fixed skin-6">
+    <div class="sidebar-inner scrollable-sidebar">
+        <div class="size-toggle">
+            <a class="btn btn-sm" id="sizeToggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
+                <i class="fa fa-power-off"></i>
+            </a>
+        </div><!-- /size-toggle -->
+        <div class="user-block clearfix">
+            <img src="${userImageUrl}" th:src="${userImageUrl}" alt="User Avatar" class="userAvatar"/>
+            <div class="detail">
+                <ul class="list-inline">
+                    <li>
+                        <a href="profile" class="link userFullName"><strong th:text="${userName}">John Doe</strong></a>
+                    </li>
+                </ul>
+
+                        <div class="btn-group" id="statusButton">
+                            <button class="btn btn-xs btn-danger"><i class="fa fa-times-circle-o"></i> Offline</button>
+                            <button class="btn btn-xs btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" >
+                                <li><a href="online" style="color: #333 !important;"><i class="fa fa-circle"></i> Online</a></li>
+                                <li><a href="invisible" style="color: #333 !important;"><i class="fa fa-circle-o"></i> Invisible</a></li>
+                                <li><a href="offline" style="color: #333 !important;"><i class="fa fa-times-circle-o"></i> Offline</a></li>
+                                <li><a href="logout" style="color: #333 !important;"><i class="fa fa-power-off"></i> Log Out</a></li>
+                            </ul>
+                        </div>
+
+            </div>
+        </div><!-- /user-block -->
+        <div class="search-block">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm" placeholder="search here..."/>
+						<span class="input-group-btn">
+							<button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+						</span>
+            </div><!-- /input-group -->
+        </div><!-- /search-block -->
+        <div class="main-menu">
+            <ul>
+                <li class="active">
+                    <a href="dashboard" class="link">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i>
+								</span>
+								<span class="text">
+									Dashboard
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="visitor-list" class="link">
+								<span class="menu-icon">
+									<i class="fa fa-comments fa-lg"></i>
+								</span>
+								<span class="text">
+									Visitor List
+								</span>
+                        <span id="visitorsCount" class="badge badge-success bounceIn animation-delay5 visitor-count" th:text="${visitorsCount}">9</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                </li>
+                <li class="openable">
+                    <a href="configurations">
+								<span class="menu-icon">
+									<i class="fa fa-cogs fa-lg"></i>
+								</span>
+								<span class="text">
+									Configirations
+								</span>
+                        <span class="menu-hover"></span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="layout" class="link"><span class="submenu-label">Layout</span></a></li>
+                        <li><a href="messages" class="link"><span class="submenu-label">Messages</span></a></li>
+                        <li><a href="invitations" class="link"><span class="submenu-label">invitations</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /main-menu -->
+    </div><!-- /sidebar-inner -->
+</aside>
+
+</body>
+</html>
