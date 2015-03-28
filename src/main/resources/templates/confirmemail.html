@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/basic">
+<head>
+
+    <title th:text="#{register.confirm.email.title}">Confirm your email address</title>
+
+</head>
+
+<body>
+
+    <div class="login-widget animation-delay1" layout:fragment="content">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-plus-circle fa-lg"></i>
+                <th:block th:text="#{register.confirm.email}"> Confirm your email</th:block>
+            </div>
+            <div class="panel-body">
+                <form id="confirm-email-form" class="form-login" th:action="@{/confirmemail}" th:object="${confirmEmailView}" method="post" role="form" >
+                    <div class="form-group" th:classappend="${#fields.hasErrors('email')}?has-error">
+                            <label th:text="#{global.email}">Email Address</label>
+                            <input type="text" th:field="*{email}"
+                               th:placeholder="#{global.email}"
+                               th:attr="data-placement=${#fields.hasErrors('email')}?right,data-content=${#fields.hasErrors('email')}?${#fields.errors('email')},data-container=${#fields.hasErrors('email')}?body,data-toggle=${#fields.hasErrors('email')}?popover,data-trigger=${#fields.hasErrors('email')}?focus"
+                               class="form-control input-sm bounceIn animation-delay5" />
+                    </div><!-- /form-group -->
+                    <div class="form-group" th:if="${#fields.hasErrors('email')}">
+                        <div class="alert alert-danger" th:errors="*{email}">
+                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <div class="form-group">
+                        <div class="controls text-right">
+                            <a id="confirmEmailSubmit" class="btn btn-success btn-sm bounceIn animation-delay7" >
+                                <i class="fa fa-plus-circle"></i>
+                                <th:block th:text="#{register.confirm}">Confirm</th:block>
+                            </a>
+                        </div>
+                    </div><!-- /form-group -->
+                </form>
+            </div>
+        </div><!-- /panel -->
+    </div><!-- /login-widget -->
+
+    <!-- jquery popup overlay -->
+    <div layout:include="layouts/light_modal :: modal"  layout:fragment="page-modal" th:remove="tag" th:if="${message != null}" >
+        <h4 layout:fragment="modal-content" th:text="#{signup.registered}">Successfuly registered. Now you can log in.</h4>
+    </div>
+
+    <!--Page custom script-->
+    <th:block layout:fragment="page-scripts">
+        <script src="js/pagejs/confirmEmail.js" th:src="@{/js/pagejs/confirmEmail.js}"></script>
+
+        <script th:if="${message != null}">
+            $(function() {
+                $('#lightCustomModal').popup('show');
+            });
+        </script>
+    </th:block>
+
+</body>
+</html>
+

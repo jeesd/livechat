@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Light Modal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../resources/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="../../resources/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+
+    <!-- Endless -->
+    <link href="../../resources/css/endless.min.css" th:href="@{/css/endless.min.css}" rel="stylesheet"/>
+
+</head>
+<body layout:fragment="modal">
+    <div class="custom-popup light width-100" id="lightCustomModal" style="visibility: hidden;">
+    <div class="padding-md" >
+        <h4 class="m-top-none" layout:fragment="modal-content">
+            Your password reset link was send to your email.
+        </h4>
+    </div>
+
+    <div class="text-center" layout:fragment="modal-button">
+        <a href="/signin" th:href="@{/signin}" class="btn btn-success m-right-sm" th:text="#{global.signin}" >
+            Sign in
+        </a>
+    </div>
+</div>
+</body>
+</html>

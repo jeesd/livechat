@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <title>Login layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <th:block layout:fragment="head"></th:block>
+    <!-- Bootstrap core CSS -->
+    <link href="../../resources/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="../../resources/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+
+    <!-- Endless -->
+    <link href="../../resources/css/endless.min.css" th:href="@{/css/endless.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+    <div class="login-wrapper">
+        <div class="text-center">
+            <h2 class="fadeInUp animation-delay8" style="font-weight:bold">
+                <span class="text-success" th:text="#{register.t1}">
+                    My Chat
+                </span>
+                <span style="color:#ccc; text-shadow:0 1px #fff" th:text="#{register.t2}">
+                    Support
+                </span>
+            </h2>
+        </div>
+
+        <div class="login-widget animation-delay1" layout:fragment="content">
+            <p>Page content goes here</p>
+        </div>
+    </div>
+
+    <th:block layout:fragment="page-modal">
+        <p>Modal window</p>
+    </th:block>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <!-- Jquery -->
+    <script src="/js/templatejs/jquery-1.10.2.min.js" th:src="@{/js/templatejs/jquery-1.10.2.min.js}"></script>
+
+    <!-- Bootstrap -->
+    <script src="/bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+    <!-- Modernizr -->
+    <script src='/js/templatejs/modernizr.min.js' th:src="@{/js/templatejs/modernizr.min.js}"></script>
+
+    <!-- Pace -->
+    <script src='/js/pace.min.js' th:src="@{/js/templatejs/pace.min.js}"></script>
+
+    <!-- Popup Overlay -->
+    <script src='/js/jquery.popupoverlay.min.js' th:src="@{/js/templatejs/jquery.popupoverlay.min.js}"></script>
+
+    <!-- Slimscroll -->
+    <script src='/js/jquery.slimscroll.min.js' th:src="@{/js/templatejs/jquery.slimscroll.min.js}"></script>
+
+    <!-- Cookie -->
+    <script src='/js/jquery.cookie.min.js' th:src="@{/js/templatejs/jquery.cookie.min.js}"></script>
+
+    <!-- Endless -->
+    <script src="/js/endless/endless.js" th:src="@{/js/templatejs/endless/endless.js}"></script>
+
+    <th:block layout:fragment="page-scripts">
+        <p>Page scripts</p>
+    </th:block>
+
+</body>
+</html>

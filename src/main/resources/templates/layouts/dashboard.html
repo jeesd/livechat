@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8"/>
+    <title th:text="#{global.application}">My Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- Font Awesome -->
+    <link href="css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+
+    <!-- Pace -->
+    <link href="css/pace.css" th:href="@{/css/pace.css}" rel="stylesheet"/>
+
+    <!-- gritter -->
+    <link href="css/gritter/jquery.gritter.css" th:href="@{/css/gritter/jquery.gritter.css}" rel="stylesheet"/>
+
+    <!-- Endless -->
+    <link href="css/endless.min.css" th:href="@{/css/endless.min.css}" rel="stylesheet"/>
+    <link href="css/endless-skin.css" th:href="@{/css/endless-skin.css}" rel="stylesheet"/>
+
+    <!-- Datatable -->
+    <link href="css/jquery.dataTables_themeroller.css" rel="stylesheet" />
+
+    <th:block layout:fragment="page-header">
+    </th:block>
+
+</head>
+
+<body class="overflow-hidden" layout:fragment="page-body">
+
+<div layout:include="layouts/fragments/header :: header" th:remove="tag"></div>
+
+
+<div id="wrapper" class="preload">
+
+    <div layout:include="layouts/fragments/top-nav :: top-nav" th:remove="tag"></div>
+    <div layout:include="layouts/fragments/left-nav :: left-nav" th:remove="tag"></div>
+
+    <div id="main-container">
+        <div id="breadcrumb">
+            <ul class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="index" class="link" th:text="| #{global.app.name.sort1} #{global.app.name.sort2}|"> Dashboard</a></li>
+                <li class="active" layout:fragment="active-page-name"> Blank page</li>
+            </ul>
+        </div><!-- breadcrumb -->
+        <div id="main-content" layout:fragment="page-main-content">
+            Dashboard
+        </div><!-- /main-content -->
+
+
+
+    </div><!-- /main-container -->
+
+</div><!-- /wrapper -->
+
+<!-- jquery popup overlay -->
+<div layout:include="layouts/light_modal :: modal"  layout:fragment="page-modal" th:remove="tag" >
+    <h4 layout:fragment="modal-content" >Error.</h4>
+</div>
+
+<div layout:include="layouts/fragments/footer :: footer" th:remove="tag"></div>
+
+<th:block layout:fragment="page-scripts">
+
+</th:block>
+
+<!--Page custom script-->
+<script>
+    var NlsMessages = {
+        "session.timeout" : '<th:block th:text="#{session.timeout}"></th:block>',
+        "error.go.login":'<th:block th:text="#{error.go.login}"></th:block>',
+        "global.error":'<th:block th:text="#{global.error}"></th:block>',
+        "global.tryagain":'<th:block th:text="#{global.tryagain}"></th:block>',
+        "global.close":'<th:block th:text="#{global.close}"></th:block>',
+        "global.profileChanged":'<th:block th:text="#{global.profileChanged}"></th:block>',
+        "global.passwordChanged":'<th:block th:text="#{global.passwordChanged}"></th:block>',
+        "global.avatarUploaded":'<th:block th:text="#{global.avatarUploaded}"></th:block>',
+        "global.fileExist":'<th:block th:text="#{global.fileExist}"></th:block>',
+        "global.accountChanged":'<th:block th:text="#{global.accountChanged}"></th:block>'
+    };
+</script>
+
+</body>
+</html>
+

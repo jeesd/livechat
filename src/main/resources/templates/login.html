@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html th:lang="${#ctx.locale}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/basic">
+<head>
+
+    <title>Login</title>
+
+</head>
+
+<body>
+
+    <div class="login-widget animation-delay1" layout:fragment="content">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="pull-left">
+                    <i class="fa fa-lock fa-lg"></i>
+                    <span th:text="#{global.login.title}">Login</span>
+                </div>
+
+                <div class="pull-right">
+                    <span style="font-size:11px;" th:utext="#{login.dnhaccount}">Don't have any account?</span>
+                    <a class="btn btn-default btn-xs login-link" href="signup" style="margin-top:-2px;"><i class="fa fa-plus-circle"></i>
+                        <span th:text="#{register.signup}">Sign up</span>
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form id="sign-in-form" class="form-login" action="/login.do" th:action="@{/login.do}" method="post" role="form">
+                    <div class="form-group">
+                        <label th:text="#{global.email}">Email</label>
+                        <input id="j_username" name='j_username' value="lubo08@hotmail.com"
+                               type="text" placeholder="Email" th:placeholder="#{global.email}" class="form-control input-sm bounceIn animation-delay2" />
+                    </div>
+                    <div class="form-group">
+                        <label th:text="#{global.password}">Password</label>
+                        <input id="j_password" name='j_password' value="1234567"
+                               type="password" placeholder="Password" th:placeholder="#{global.password}" class="form-control input-sm bounceIn animation-delay4"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-checkbox inline">
+                            <input name='_spring_security_remember_me' id="_spring_security_remember_me" value="true" type="checkbox" class="regular-checkbox chk-delete" />
+                            <span class="custom-checkbox info bounceIn animation-delay4"></span>
+                        </label>
+                        <span th:text="#{login.remember.me}">Remember me</span>
+                    </div>
+
+                    <div class="seperator"></div>
+                    <div class="form-group">
+                        <span th:text="#{login.forgotpswquestion}">Forgot your password?</span>
+                        <br/>
+                        <span th:text="#{login.click}">Click</span>
+                        <a href="/password/reset" th:href="@{/password/reset}" class="primary-font login-link" th:text="#{login.here}">
+                            here
+                        </a>
+                        <span th:text="#{login.psw.reset}">to reset your password</span>
+                    </div>
+
+                    <hr/>
+					
+                    <a href="/dashboard" th:href="@{/dashboard}" id="signin_submit" class="btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" >
+                        <i class="fa fa-sign-in"></i>
+                        <span th:text="#{global.signin}">Sign in</span>
+                    </a>
+
+					<!-- Social Sign In Buttons -->				
+					<a href="/auth/facebook" th:href="@{/auth/facebook}" id="signin_submit_fcb" class="btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" >
+						<i class="fa fa-sign-in"></i>
+                        <span th:text="#{global.facebook.signin}">Sign in with Facebook</span>
+					</a>
+					
+					<a href="/auth/twitter" th:href="@{/auth/twitter}" id="signin_submit_twit" class="btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right" >
+						<i class="fa fa-sign-in"></i>
+                        <th:block th:text="#{global.twitter.signin}">Twiter login</th:block>
+
+					</a>
+					
+                    <input type="hidden" name="${_csrf.parameterName}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"  value="${_csrf.token}" />
+
+                </form>
+            </div>
+        </div><!-- /panel -->
+    </div><!-- /login-widget -->
+
+    <th:block layout:fragment="page-scripts">
+        <!--Page custom script-->
+        <script src="/js/pagejs/login.js" th:src="@{/js/pagejs/login.js}"></script>
+
+        <script th:if="${error != null}">
+            $(function() {
+                $('#darkCustomModal').popup('show');
+            });
+        </script>
+
+    </th:block>
+
+    <div layout:include="layouts/dark_modal :: modal"  layout:fragment="page-modal" th:remove="tag" th:if="${error != null}" >
+        <h4 layout:fragment="modal-content" th:text="${error.errorMessage}">Login fail.</h4>
+        <div class="text-center" layout:fragment="modal-button">
+            <a href="#" class="btn btn-danger darkCustomModal_close">OK</a>
+        </div>
+    </div>
+</body>
+</html>

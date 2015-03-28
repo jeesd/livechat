@@ -1,0 +1,58 @@
+---
+spring:
+  profiles: dev
+  jpa:
+    generate-ddl: false
+
+logging:
+  file: logs/application_log
+  level:
+     ROOT: WARN     
+     org.mylivedata.app: DEBUG
+     org.springframework: INFO
+     org.hibernate: INFO
+
+datasource:
+  initialize: false
+   
+flyway:
+  locations: /db/migration/h2
+
+---
+spring:
+   profiles: demo
+   jpa:
+    generate-ddl: false
+
+logging:
+   file: logs/application_log_demo
+   level:
+     ROOT: WARN     
+     org.mylivedata.app: DEBUG
+     org.springframework: INFO
+     org.hibernate: INFO
+
+datasource:
+  initialize: false
+
+flyway:
+  locations: /db/migration/h2
+       
+---
+spring:
+   profiles: production
+
+logging:
+   file: logs/application_log_prod.txt
+   level:
+     ROOT: WARN     
+     org.mylivedata.app: DEBUG
+     org.springframework: INFO
+     org.hibernate: INFO
+
+datasource:
+  initialize: false   
+  
+flyway:
+  locations: /db/migration/mysql  
+     
