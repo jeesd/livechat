@@ -18,8 +18,8 @@ public class MailConfigurator {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         javaMailSender.setHost("smtp.gmail.com");
         javaMailSender.setPort(465);
-        javaMailSender.setUsername("");
-        javaMailSender.setPassword("");
+        javaMailSender.setUsername("it.lubo@gmail.com");
+        javaMailSender.setPassword("***REMOVED***");
         Properties mailProperties = new Properties();
         mailProperties.setProperty("mail.smtp.auth", "true");
         mailProperties.setProperty("mail.smtp.socketFactory.port", "465");
