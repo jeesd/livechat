@@ -5,7 +5,7 @@ spring:
     generate-ddl: false
 
 logging:
-  file: logs/application_log
+  file: logs/application_dev_log.txt
   level:
      ROOT: WARN     
      org.mylivedata.app: DEBUG
@@ -18,6 +18,16 @@ datasource:
 flyway:
   locations: /db/migration/h2
 
+server:
+  port: 8443
+  ssl:
+    key-store: D:/MYWORK/keystore
+    key-store-password: test123456
+    key-password: test123456
+
+thymeleaf:
+  cache: false
+
 ---
 spring:
    profiles: demo
@@ -25,7 +35,7 @@ spring:
     generate-ddl: false
 
 logging:
-   file: logs/application_log_demo
+   file: logs/application_log_demo.txt
    level:
      ROOT: WARN     
      org.mylivedata.app: DEBUG

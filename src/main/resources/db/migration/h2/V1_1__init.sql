@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS ONLINE_USERS (
   IS_OPERATOR int(11) NOT NULL DEFAULT '0',
   SESSION_ID int(11) DEFAULT NULL,
   IS_HTTP_ONLINE int(11) NOT NULL DEFAULT '0',
-  UNIQUE KEY unique_user_id (USER_ID),
+  UNIQUE (USER_ID),
 )  ;
 
 CREATE TABLE IF NOT EXISTS PERSISTENT_LOGINS (
@@ -138,8 +138,8 @@ CREATE TABLE IF NOT EXISTS USERS (
   IS_CREDENTIALS_NON_EXPIRED varchar NOT NULL DEFAULT 'true',
   IMAGE_URL varchar(500) DEFAULT NULL,
   PRIMARY KEY (USER_ID),
-  UNIQUE KEY email (EMAIL),
-  UNIQUE KEY unique_identification_hash (IDENTIFICATION_HASH)
+  UNIQUE (EMAIL),
+  UNIQUE (IDENTIFICATION_HASH)
 ) ;
 
 CREATE TABLE IF NOT EXISTS USERS_CHATS (
@@ -252,23 +252,23 @@ INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_i
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
 (39, 'en', 'registrationText', 'Hello! It''s really great to see you here.<br/> Tell us just a few details about you and we are ready<br/> to go!', 'GB');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(40, 'sk', 'welcomeText', 'Vítajte na našej podpore', 'SK');
+(40, 'sk', 'welcomeText', 'Vï¿½tajte na naï¿½ej podpore', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(41, 'sk', 'offlineMessage', 'NECHAJTE NÁM<br /> SPRÁVU', 'SK');
+(41, 'sk', 'offlineMessage', 'NECHAJTE Nï¿½M<br /> SPRï¿½VU', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(42, 'sk', 'leftOfflineMessage', 'Momntálne tu nie sme. <br /> Prosím nechajte nám správu a my Vám odpovieme v co najkratšom case.', 'SK');
+(42, 'sk', 'leftOfflineMessage', 'Momntï¿½lne tu nie sme. <br /> Prosï¿½m nechajte nï¿½m sprï¿½vu a my Vï¿½m odpovieme v co najkratï¿½om case.', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(43, 'sk', 'onlineMessage', 'MOŽEME VÁM<br /> POMOCT?', 'SK');
+(43, 'sk', 'onlineMessage', 'MOï¿½EME Vï¿½M<br /> POMOCT?', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(44, 'sk', 'requesting', '<div class="loader_#{template} loader"></div><div style="font-size:11px">POSIELAM POŽIADAVKU</div>', 'SK');
+(44, 'sk', 'requesting', '<div class="loader_#{template} loader"></div><div style="font-size:11px">POSIELAM POï¿½IADAVKU</div>', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(45, 'sk', 'afterSentOfflineMessage', 'VAŠA SPRÁVA<br /> BOLA ODOSLANÁ', 'SK');
+(45, 'sk', 'afterSentOfflineMessage', 'VAï¿½A SPRï¿½VA<br /> BOLA ODOSLANï¿½', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
 (46, 'sk', 'inChatWithMessage', 'CETUJETE S<br />#{name}', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(47, 'sk', 'newMessageNotification', 'MÁTE NOVÚ SPRÁVU', 'SK');
+(47, 'sk', 'newMessageNotification', 'Mï¿½TE NOVï¿½ SPRï¿½VU', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(48, 'sk', 'registrationText', 'Dobrý den. <br /> Povedzte nám nieco o sebe a môžeme zacat.', 'SK');
+(48, 'sk', 'registrationText', 'Dobrï¿½ den. <br /> Povedzte nï¿½m nieco o sebe a mï¿½ï¿½eme zacat.', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
 (49, 'en', 'registrationYourName', 'Your Name', 'GB');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
@@ -286,11 +286,11 @@ INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_i
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
 (56, 'en', 'chatMessageNotification', 'Press enter to send message', 'GB');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(57, 'sk', 'chatMessageNotification', 'Pre odoslanie stlacte klávesu enter', 'SK');
+(57, 'sk', 'chatMessageNotification', 'Pre odoslanie stlacte klï¿½vesu enter', 'SK');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
 (58, 'en', 'chatInitationOnlineMessage', 'Now online: Leave a question or comment and our agents will try to attend to you shortly', 'GB');
 INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(59, 'sk', 'chatInitationOnlineMessage', 'Sme online: Napíšte nám správu a my Vám odpoviem v krátkom case. ', 'SK');
+(59, 'sk', 'chatInitationOnlineMessage', 'Sme online: Napï¿½te nï¿½m sprï¿½vu a my Vï¿½m odpoviem v krï¿½tkom case. ', 'SK');
 
 ALTER TABLE ACCOUNTS
   ADD CONSTRAINT ACCOUNT_TO_USER FOREIGN KEY (OWNER_ID) REFERENCES USERS (USER_ID);
