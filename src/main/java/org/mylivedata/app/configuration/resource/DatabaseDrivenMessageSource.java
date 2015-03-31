@@ -28,15 +28,10 @@ public class DatabaseDrivenMessageSource extends AbstractMessageSource implement
 
     private ResourceLoader resourceLoader;
 
-    private final Map<String, Map<String, String>> properties = new HashMap<String, Map<String, String>>();
+    private final Map<String, Map<String, String>> properties = new HashMap<>();
 
     @Autowired
     private LayoutService layoutService;
-
-    @PostConstruct
-    private void runIt() {
-        reload();
-    }
 
     @Override
     protected MessageFormat resolveCode(String code, Locale locale) {
@@ -52,7 +47,9 @@ public class DatabaseDrivenMessageSource extends AbstractMessageSource implement
 
     private String getText(String code, Locale locale) {
 
-
+        if(properties.isEmpty()){
+            this.reload();
+        }
 
         Map<String, String> localized = properties.get(locale.getLanguage()+"_"+locale.getCountry());
         String textForCurrentLanguage = null;
