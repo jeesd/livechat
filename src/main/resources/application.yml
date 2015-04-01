@@ -2,7 +2,8 @@
 spring:
   profiles: dev
   jpa:
-    generate-ddl: false
+    hibernate:
+      generate-ddl: false
 
 logging:
   file: logs/application_log
@@ -17,6 +18,16 @@ datasource:
    
 flyway:
   locations: /db/migration/h2
+
+thymeleaf:
+  cache: false
+
+server:
+  port: 8443
+  ssl:
+    key-store: D:/MYWORK/keystore
+    key-store-password: test123456
+    key-password: test123456
 
 ---
 spring:

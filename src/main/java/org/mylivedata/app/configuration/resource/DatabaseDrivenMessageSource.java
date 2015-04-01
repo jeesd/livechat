@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
 import org.mylivedata.app.dashboard.domain.MessageResourceEntity;
 import org.mylivedata.app.dashboard.repository.service.LayoutService;
 import org.slf4j.Logger;
@@ -24,7 +22,7 @@ import org.springframework.core.io.ResourceLoader;
 public class DatabaseDrivenMessageSource extends AbstractMessageSource implements ResourceLoaderAware {
 
     private final Logger LOGGER = LoggerFactory.getLogger(DatabaseDrivenMessageSource.class);
-    public static final String DEFULT_LANGUAGE = "en_GB";
+    public static final String DEFAULT_LANGUAGE = "en_GB";
 
     private ResourceLoader resourceLoader;
 
@@ -58,10 +56,10 @@ public class DatabaseDrivenMessageSource extends AbstractMessageSource implement
         if (localized != null) {
             textForCurrentLanguage = localized.get(code);
             if (textForCurrentLanguage == null) {
-                textForCurrentLanguage = properties.get(DEFULT_LANGUAGE).get(code);
+                textForCurrentLanguage = properties.get(DEFAULT_LANGUAGE).get(code);
             }
         } else {
-            textForCurrentLanguage = properties.get(DEFULT_LANGUAGE).get(code);
+            textForCurrentLanguage = properties.get(DEFAULT_LANGUAGE).get(code);
         }
         if (textForCurrentLanguage==null) {
             //Check parent message
@@ -90,6 +88,7 @@ public class DatabaseDrivenMessageSource extends AbstractMessageSource implement
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
+        assert texts!=null;
         for (MessageResourceEntity text : texts) {
             if(messageByLang.containsKey(text.getLangIsoCode()+"_"+text.getCoutryIsoCode())){
                 ((Map)messageByLang.get(text.getLangIsoCode()+"_"+text.getCoutryIsoCode())).put(text.getTextCode(),text.getTextValue());
