@@ -1,7 +1,7 @@
 /**
  * Created by lubo08 on 9.11.2014.
  */
-define(['jquery'], function($){
+define(['jquery','require'], function($,require){
 
     var EventEmitter = function() {};
     // inspired by intercom.js
@@ -352,8 +352,9 @@ define(['jquery'], function($){
 
 
     var CometBinding = function(cometd, liveCommunicator) {
+
         var config = {
-            contextPath: 'https://appchatserver.com:8443'
+            contextPath: $(location).attr('protocol')+"//"+$(location).attr('host')
         };
         var cometURL = config.contextPath+"/cometd";
 
