@@ -1,6 +1,5 @@
 package org.mylivedata.app.configuration.filter;
 
-import org.mylivedata.app.configuration.domain.VisitorPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.GenericFilterBean;
@@ -19,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.UUID;
+import org.mylivedata.app.connection.domain.VisitorPrincipal;
 
 /**
  * Created by lubo08 on 2.7.2014.

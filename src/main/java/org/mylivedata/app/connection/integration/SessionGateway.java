@@ -13,10 +13,10 @@ import org.springframework.messaging.handler.annotation.Payload;
  * Created by lubo08 on 29.10.2014.
  */
 @MessagingGateway(defaultRequestChannel = "logSession")
-public interface SessionLogGateway {
+public interface SessionGateway {
 
     @Gateway(requestChannel = "logSession", replyChannel = "chatUser")
-    ChatUser logSession(@Payload SecureUser userDetails,
+    ChatUser addSession(@Payload SecureUser userDetails,
                                   @Header("REMOTE_ADDRESS") String remoteAddress,
                                   @Header("CREATION_TIME") long creationTime,
                                   @Header(value = "USER_AGENT", required = false) String userAgent,

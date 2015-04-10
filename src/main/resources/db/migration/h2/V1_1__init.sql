@@ -217,7 +217,7 @@ INSERT INTO USERS (user_id, name, surrname, email, password, registration, last_
 (1, 'lubo08', 'Developer', 'lubo08@hotmail.com', '$2a$10$8A.CHyB46V9Lli7911ROC.rsnhQN1XLl5ioyKdsV0cPkWV69zXAYu', '2014-12-15 13:08:46', '2014-04-15 23:14:44', NULL, NULL, 1, 'true', NULL);
 
 INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description) VALUES
-(1, '<div class="chatBarContainerCss chatBarBcg_silver"\r\n     >\r\n    <div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div>\r\n    <div id="chatBarText" class="chatBarTextCss" th:utext="#{onlineMessage}">CAN WE <br/> HELP YOU?</div>\r\n    <div id="chatNotificationIcon" class="notificationChat">1</div>\r\n\r\n</div>', NULL, 'bubble_style', 'bubble', NULL);
+(1, '<div class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{onlineMessage}">CAN WE <br/> HELP YOU?</div><div id="chatNotificationIcon" class="notificationChat">1</div></div>', NULL, 'bubble_style', 'bubble', NULL);
 
 INSERT INTO DOMAINS (domain_id, domain, description, account_id, visible_offline) VALUES
 (1, 'testweb.com', '', 1, 'Yes');
@@ -233,64 +233,36 @@ INSERT INTO ASSOC_GROUP_ROLE (ROLE_ID, GROUP_ID) VALUES
 INSERT INTO ASSOC_GROUP_ROLE (ROLE_ID, GROUP_ID) VALUES
 (3, 3);
 
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(31, 'en', 'welcomeText', 'Welcome to ITSENCE support', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(32, 'en', 'offlineMessage', 'LEAVE US<br />A MESSAGE?', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(33, 'en', 'leftOfflineMessage', 'We are offline now. <br/>Please left us a message we will responce to you.', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(34, 'en', 'onlineMessage', 'CAN WE<br />HELP YOU?', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(35, 'en', 'requesting', '<div class="loader_#{template} loader"></div><div style="font-size:11px">SENDING REQUEST</div>', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(36, 'en', 'afterSentOfflineMessage', 'YOUR MESSAGE<br />HAS BEAN SENT', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(37, 'en', 'inChatWithMessage', 'IN CHAT WITH<br/>#{name}', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(38, 'en', 'newMessageNotification', 'YOU HAVE<br />NEW MESSAGE', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(39, 'en', 'registrationText', 'Hello! It''s really great to see you here.<br/> Tell us just a few details about you and we are ready<br/> to go!', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(40, 'sk', 'welcomeText', 'VÌtajte na naöej podpore', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(41, 'sk', 'offlineMessage', 'NECHAJTE N¡M<br /> SPR¡VU', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(42, 'sk', 'leftOfflineMessage', 'Momnt·lne tu nie sme. <br /> ProsÌm nechajte n·m spr·vu a my V·m odpovieme v co najkratöom case.', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(43, 'sk', 'onlineMessage', 'MOéEME V¡M<br /> POMOCT?', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(44, 'sk', 'requesting', '<div class="loader_#{template} loader"></div><div style="font-size:11px">POSIELAM POéIADAVKU</div>', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(45, 'sk', 'afterSentOfflineMessage', 'VAäA SPR¡VA<br /> BOLA ODOSLAN¡', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(46, 'sk', 'inChatWithMessage', 'CETUJETE S<br />#{name}', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(47, 'sk', 'newMessageNotification', 'M¡TE NOV⁄ SPR¡VU', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(48, 'sk', 'registrationText', 'Dobr˝ den. <br /> Povedzte n·m nieco o sebe a mÙûeme zacat.', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(49, 'en', 'registrationYourName', 'Your Name', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(50, 'en', 'registrationEmail', 'Your Email', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(51, 'en', 'registrationInfo', 'Please press "START CHAT" button to connect with our<br /> live representatives.', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(52, 'en', 'userRegistrationButton', 'START CHAT', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(53, 'sk', 'userRegistrationButton', 'CETUJ', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(54, 'en', 'userInfoRememberInputLabel', 'Remember Me', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(55, 'sk', 'userInfoRememberInputLabel', 'Zapametat si', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(56, 'en', 'chatMessageNotification', 'Press enter to send message', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(57, 'sk', 'chatMessageNotification', 'Pre odoslanie stlacte kl·vesu enter', 'SK');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(58, 'en', 'chatInitationOnlineMessage', 'Now online: Leave a question or comment and our agents will try to attend to you shortly', 'GB');
-INSERT INTO MESSAGE_RESOURCE (id, lang_iso_code, text_code, text_value, coutry_iso_code) VALUES
-(59, 'sk', 'chatInitationOnlineMessage', 'Sme online: NapÌöte n·m spr·vu a my V·m odpoviem v kr·tkom case. ', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(31, 'en', 'welcomeText', 'Welcome to ITSENCE support', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(32, 'en', 'offlineMessage', 'LEAVE US<br />A MESSAGE?', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(33, 'en', 'leftOfflineMessage', 'We are offline now. <br/>Please left us a message we will responce to you.', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(34, 'en', 'onlineMessage', 'CAN WE<br />HELP YOU?', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(35, 'en', 'requesting', '<div class="loader_#{template} loader"></div><div style="font-size:11px">SENDING REQUEST</div>', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(36, 'en', 'afterSentOfflineMessage', 'YOUR MESSAGE<br />HAS BEAN SENT', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(37, 'en', 'inChatWithMessage', 'IN CHAT WITH<br/>#{name}', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(38, 'en', 'newMessageNotification', 'YOU HAVE<br />NEW MESSAGE', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(39, 'en', 'registrationText', 'Hello! It''s really great to see you here.<br/> Tell us just a few details about you and we are ready<br/> to go!', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(40, 'sk', 'welcomeText', 'V√≠tajte na na≈°ej podpore', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(41, 'sk', 'offlineMessage', 'NECHAJTE N√ÅM<br /> SPR√ÅVU', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(42, 'sk', 'leftOfflineMessage', 'Momnt√°lne tu nie sme. <br /> Pros√≠m nechajte n√°m spr√°vu a my V√°m odpovieme v co najkrat≈°om case.', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(43, 'sk', 'onlineMessage', 'MO≈ΩEME V√ÅM<br /> POMOCT?', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(44, 'sk', 'requesting', '<div class="loader_#{template} loader"></div><div style="font-size:11px">POSIELAM PO≈ΩIADAVKU</div>', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(45, 'sk', 'afterSentOfflineMessage', 'VA≈†A SPR√ÅVA<br /> BOLA ODOSLAN√Å', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(46, 'sk', 'inChatWithMessage', 'CETUJETE S<br />#{name}', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(47, 'sk', 'newMessageNotification', 'M√ÅTE NOV√ö SPR√ÅVU', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(48, 'sk', 'registrationText', 'Dobr√Ω den. <br /> Povedzte n√°m nieco o sebe a m√¥≈æeme zacat.', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(49, 'en', 'registrationYourName', 'Your Name', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(50, 'en', 'registrationEmail', 'Your Email', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(51, 'en', 'registrationInfo', 'Please press "START CHAT" button to connect with our<br /> live representatives.', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(52, 'en', 'userRegistrationButton', 'START CHAT', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(53, 'sk', 'userRegistrationButton', 'ƒåETUJ', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(54, 'en', 'userInfoRememberInputLabel', 'Remember Me', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(55, 'sk', 'userInfoRememberInputLabel', 'Zapametat si', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(56, 'en', 'chatMessageNotification', 'Press enter to send message', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(57, 'sk', 'chatMessageNotification', 'Pre odoslanie stlacte kl√°vesu enter', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(58, 'en', 'chatInitationOnlineMessage', 'Now online: Leave a question or comment and our agents will try to attend to you shortly', 'GB');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(59, 'sk', 'chatInitationOnlineMessage', 'Sme online: Nap√≠≈°te n√°m spr√°vu a my V√°m odpoviem v kr√°tkom case. ', 'SK');
+
 
 ALTER TABLE ACCOUNTS
   ADD CONSTRAINT ACCOUNT_TO_USER FOREIGN KEY (OWNER_ID) REFERENCES USERS (USER_ID);

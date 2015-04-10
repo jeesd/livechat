@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.mylivedata.app.configuration.domain.VisitorPrincipal;
+import org.mylivedata.app.connection.domain.VisitorPrincipal;
 import org.mylivedata.app.connection.BrowserConnectionManager;
 import org.mylivedata.app.connection.SessionInfo;
 import org.mylivedata.app.dashboard.domain.custom.SecureUser;

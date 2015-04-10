@@ -1,4 +1,4 @@
-package org.mylivedata.app.configuration.domain;
+package org.mylivedata.app.connection.domain;
 
 import java.util.Locale;
 

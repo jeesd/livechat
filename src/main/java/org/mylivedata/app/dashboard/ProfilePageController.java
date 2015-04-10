@@ -46,10 +46,10 @@ public class ProfilePageController {
     private MessageSource messageSource;
 
     @RequestMapping(value="/profile", method=RequestMethod.GET)
-    public String loadProfilePage(Model m, HttpSession session) throws Exception {
+    public String loadProfilePage(Model m, HttpSession session, HttpServletRequest request) throws Exception {
         SecurityContext securityContext = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");
         SecureUser secUser = (SecureUser)securityContext.getAuthentication().getPrincipal();
-        sessionInfoUtils.setDashboardInfo(m,session,true);
+        //sessionInfoUtils.setDashboardInfo(m,session,request,true);
 
         ProfileFormView profileFormView = new ProfileFormView();
         profileFormView.setEmail(secUser.getEmail());
@@ -71,7 +71,7 @@ public class ProfilePageController {
             return ajaxUtils.isAjaxRequest(request) ? "profile :: profile-save-form" : "profile";
         }
 
-        sessionInfoUtils.setDashboardInfo(m,session);
+        //sessionInfoUtils.setDashboardInfo(m,session,request);
         try {
             SecurityContext securityContext = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");
             SecureUser secUser = (SecureUser)securityContext.getAuthentication().getPrincipal();
@@ -98,7 +98,7 @@ public class ProfilePageController {
             return ajaxUtils.isAjaxRequest(request) ? "profile :: password-update-form" : "profile";
         }
 
-        sessionInfoUtils.setDashboardInfo(m,session);
+        //sessionInfoUtils.setDashboardInfo(m,session);
         try {
             userService.updateUserPassword(password.getUserId(), password.getPassword());
         } catch(Exception e) {
@@ -113,7 +113,7 @@ public class ProfilePageController {
     public String changeAvatar(Model m, @RequestParam("imageUrl") MultipartFile imageUrl, HttpSession session,
                                HttpServletRequest request, HttpServletResponse response) {
 
-        sessionInfoUtils.setDashboardInfo(m,session);
+        //sessionInfoUtils.setDashboardInfo(m,session);
         if (!imageUrl.isEmpty()) {
             try {
                 SecurityContext securityContext = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");
@@ -136,7 +136,7 @@ public class ProfilePageController {
     public String saveAccountForm(Model m, @Valid AccountFormView account, BindingResult result,
                                   HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
 
-        sessionInfoUtils.setDashboardInfo(m,session);
+        //sessionInfoUtils.setDashboardInfo(m,session);
         //m.addAttribute("createUserFormDataView", new CreateUserFormDataView());
         if (result.hasErrors()) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

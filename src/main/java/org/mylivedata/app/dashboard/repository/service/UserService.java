@@ -1,6 +1,6 @@
 package org.mylivedata.app.dashboard.repository.service;
 
-import org.mylivedata.app.configuration.domain.VisitorPrincipal;
+import org.mylivedata.app.connection.domain.VisitorPrincipal;
 import org.mylivedata.app.dashboard.domain.UsersEntity;
 import org.mylivedata.app.dashboard.domain.custom.OnlineUsersView;
 import org.mylivedata.app.dashboard.domain.custom.ProfileFormView;

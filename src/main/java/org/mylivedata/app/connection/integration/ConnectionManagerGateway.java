@@ -2,7 +2,7 @@ package org.mylivedata.app.connection.integration;
 
 import java.util.concurrent.Future;
 
-import org.mylivedata.app.configuration.domain.VisitorPrincipal;
+import org.mylivedata.app.connection.domain.VisitorPrincipal;
 import org.mylivedata.app.connection.BrowserConnectionManager;
 import org.mylivedata.app.dashboard.domain.custom.SecureUser;
 import org.springframework.integration.annotation.Gateway;

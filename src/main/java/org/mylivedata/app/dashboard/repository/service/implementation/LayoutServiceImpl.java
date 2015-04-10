@@ -26,7 +26,6 @@ public class LayoutServiceImpl implements LayoutService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly=true, rollbackFor=Exception.class)
     public String getLayoutHtml(String name,String fragment) throws Exception {
         String layout = "";
-
         DefaultLayoutsEntity defaultLayoutsEntity = defaultLayoutsEntityRepository.findByNameAndFragment("bubble_style","bubble");
         layout = defaultLayoutsEntity.getHtml();
         return layout;

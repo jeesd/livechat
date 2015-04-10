@@ -40,8 +40,6 @@ public class AjaxRedirectFilter  extends GenericFilterBean {
         try
         {
             filterChain.doFilter(servletRequest, servletResponse);
-
-            LOGGER.debug("Chain processed normally");
         }
         catch (IOException ex)
         {
@@ -70,11 +68,13 @@ public class AjaxRedirectFilter  extends GenericFilterBean {
                 } else if (throwableAnalyzer.getFirstThrowableOfType(AuthenticationException.class, causeChain) != null) {
                     responceAjaxExceptionCode = AjaxRedirectFilter.INVALID_AUTHENTICATION_AJAX_ERROR_CODE;
                 }
+
+                LOGGER.debug("Ajax error response code: "+responceAjaxExceptionCode);
+
                 HttpServletResponse resp = (HttpServletResponse) servletResponse;
                 String contentType = "application/json";
                 resp.setContentType(contentType);
                 resp.setStatus(responceAjaxExceptionCode);
-
                 // forward to error page.
                 RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/ajax-error");
                 dispatcher.forward(servletRequest, resp);

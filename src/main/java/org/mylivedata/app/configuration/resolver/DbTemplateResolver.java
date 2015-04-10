@@ -1,20 +1,16 @@
 package org.mylivedata.app.configuration.resolver;
 
 
-import org.mylivedata.app.dashboard.repository.service.LayoutService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.thymeleaf.TemplateProcessingParameters;
-
-import com.google.common.collect.Sets;
-
-import org.thymeleaf.resourceresolver.IResourceResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
+import org.mylivedata.app.dashboard.repository.service.LayoutService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.thymeleaf.TemplateProcessingParameters;
+import org.thymeleaf.resourceresolver.IResourceResolver;
+import org.thymeleaf.templateresolver.TemplateResolver;
+
+import com.google.common.collect.Sets;
 
 /**
  * Created by lubo08 on 3.3.2015.
@@ -26,7 +22,7 @@ public class DbTemplateResolver extends TemplateResolver {
     private final static String PREFIX_TYPE_HTML = "html:";
     private final static String PREFIX_TYPE_CSS = "css:";
     
-    //@Autowired
+    @Autowired
     private LayoutService layoutService;
 
     public DbTemplateResolver() {

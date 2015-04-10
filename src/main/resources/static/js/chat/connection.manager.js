@@ -354,8 +354,9 @@ define(['jquery'], function($){
 
 
     var CometBinding = function(cometd, liveCommunicator, urlParam) {
+
         var config = {
-            contextPath: 'http://appchatserver.com:8080'
+            contextPath: $(location).attr('protocol')+'//appchatserver.com:'+$(location).attr('port')
         };
         var cometURL = config.contextPath+"/cometd";
 

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import net.sf.ehcache.Ehcache;
@@ -40,6 +41,7 @@ import org.springframework.ui.Model;
 
 import eu.bitwalker.useragentutils.BrowserType;
 import eu.bitwalker.useragentutils.UserAgent;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 /**
  * Created by lubo08 on 18.9.2014.
@@ -283,17 +285,17 @@ public class SessionUtils {
         }
         LOGGER.debug("Online user unregistered");
     }
-
-    public void setDashboardInfo(Model m, HttpSession session, boolean loadFromDb) {
+    /* will be removed
+    public void setDashboardInfo(Model m, HttpSession session, HttpServletRequest request, boolean loadFromDb) {
 
         if (loadFromDb) {
             setDashboardInfoFromDb(m, session);
         } else {
-            setDashboardInfo(m, session);
+            setDashboardInfo(m, session, request);
         }
     }
 
-    public void setDashboardInfo(Model m, HttpSession session) {
+    public void setDashboardInfo(Model m, HttpSession session, HttpServletRequest request) {
         SecurityContext securityContext = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");
         SecureUser secUser = (SecureUser)securityContext.getAuthentication().getPrincipal();
 
@@ -305,6 +307,8 @@ public class SessionUtils {
 //            userImageUrl = connection.createData().getImageUrl();
 //        }
 
+
+        m.addAttribute("langCountry", RequestContextUtils.getLocale(request));
         m.addAttribute("userName", secUser.getFirstName()+" "+(secUser.getLastName()!=null?secUser.getLastName():""));
         m.addAttribute("userImageUrl",userImageUrl);
         m.addAttribute("userEmail",secUser.getEmail());
@@ -313,7 +317,7 @@ public class SessionUtils {
         m.addAttribute("visitorsCount", visitorsCount);
         m.addAttribute("operatorsCount", operatorsCount);
     }
-
+    */
     public void setDashboardInfoFromDb(Model m, HttpSession session) {
 
         SecurityContext securityContext = (SecurityContext)session.getAttribute("SPRING_SECURITY_CONTEXT");

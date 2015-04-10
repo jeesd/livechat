@@ -2,8 +2,8 @@
 -- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Hostite¾: localhost
--- Vygenerované: So 28.Mar 2015, 11:40
+-- HostiteÄ¾: localhost
+-- VygenerovanÃ©: So 28.Mar 2015, 11:40
 -- Verzia serveru: 5.5.24-log
 -- Verzia PHP: 5.4.12
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Databáza: `mylivedata`
+-- DatabÃ¡za: `mylivedata`
 --
 CREATE DATABASE IF NOT EXISTS `mylivedata` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `mylivedata`;
@@ -25,7 +25,7 @@ USE `mylivedata`;
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `accounts`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `accounts`
 --
 
 CREATE TABLE IF NOT EXISTS `accounts` (
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `assoc_group_role`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `assoc_group_role`
 --
 
 CREATE TABLE IF NOT EXISTS `assoc_group_role` (
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `assoc_group_role` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `assoc_user_domain`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `assoc_user_domain`
 --
 
 CREATE TABLE IF NOT EXISTS `assoc_user_domain` (
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `assoc_user_domain` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `assoc_user_groups`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `assoc_user_groups`
 --
 
 CREATE TABLE IF NOT EXISTS `assoc_user_groups` (
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `assoc_user_groups` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `conversation`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `conversation`
 --
 
 CREATE TABLE IF NOT EXISTS `conversation` (
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `conversation` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `default_layouts`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `default_layouts`
 --
 
 CREATE TABLE IF NOT EXISTS `default_layouts` (
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `default_layouts` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `departments`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `departments`
 --
 
 CREATE TABLE IF NOT EXISTS `departments` (
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `departments` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `domains`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `domains`
 --
 
 CREATE TABLE IF NOT EXISTS `domains` (
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `domains` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `groups`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `groups`
 --
 
 CREATE TABLE IF NOT EXISTS `groups` (
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `ip2location_db11`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `ip2location_db11`
 --
 
 CREATE TABLE IF NOT EXISTS `ip2location_db11` (
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `ip2location_db11` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `message_resource`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `message_resource`
 --
 
 CREATE TABLE IF NOT EXISTS `message_resource` (
@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `message_resource` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `online_users`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `online_users`
 --
 
 CREATE TABLE IF NOT EXISTS `online_users` (
@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `online_users` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `persistent_logins`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `persistent_logins`
 --
 
 CREATE TABLE IF NOT EXISTS `persistent_logins` (
@@ -242,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `persistent_logins` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `roles`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `userconnection`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `userconnection`
 --
 
 CREATE TABLE IF NOT EXISTS `userconnection` (
@@ -275,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `userconnection` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `users`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -300,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `users_chats`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `users_chats`
 --
 
 CREATE TABLE IF NOT EXISTS `users_chats` (
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `users_chats` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `user_geo_data`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `user_geo_data`
 --
 
 CREATE TABLE IF NOT EXISTS `user_geo_data` (
@@ -346,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `user_geo_data` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `user_pages`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `user_pages`
 --
 
 CREATE TABLE IF NOT EXISTS `user_pages` (
@@ -365,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `user_pages` (
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabu¾ky pre tabu¾ku `user_sessions`
+-- Å truktÃºra tabuÄ¾ky pre tabuÄ¾ku `user_sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `user_sessions` (
@@ -384,57 +384,57 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4361 ;
 
 --
--- Obmedzenie pre exportované tabu¾ky
+-- Obmedzenie pre exportovanÃ© tabuÄ¾ky
 --
 
 --
--- Obmedzenie pre tabu¾ku `accounts`
+-- Obmedzenie pre tabuÄ¾ku `accounts`
 --
 ALTER TABLE `accounts`
   ADD CONSTRAINT `account_to_user` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`);
 
 --
--- Obmedzenie pre tabu¾ku `assoc_group_role`
+-- Obmedzenie pre tabuÄ¾ku `assoc_group_role`
 --
 ALTER TABLE `assoc_group_role`
   ADD CONSTRAINT `to_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`),
   ADD CONSTRAINT `to_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`);
 
 --
--- Obmedzenie pre tabu¾ku `assoc_user_domain`
+-- Obmedzenie pre tabuÄ¾ku `assoc_user_domain`
 --
 ALTER TABLE `assoc_user_domain`
   ADD CONSTRAINT `udassoc_to_domain` FOREIGN KEY (`domain_id`) REFERENCES `domains` (`domain_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `udassoc_to_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Obmedzenie pre tabu¾ku `assoc_user_groups`
+-- Obmedzenie pre tabuÄ¾ku `assoc_user_groups`
 --
 ALTER TABLE `assoc_user_groups`
   ADD CONSTRAINT `aug_to_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`),
   ADD CONSTRAINT `aug_to_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
--- Obmedzenie pre tabu¾ku `conversation`
+-- Obmedzenie pre tabuÄ¾ku `conversation`
 --
 ALTER TABLE `conversation`
   ADD CONSTRAINT `conversation_to_chat` FOREIGN KEY (`chat_id`) REFERENCES `users_chats` (`chat_id`);
 
 --
--- Obmedzenie pre tabu¾ku `departments`
+-- Obmedzenie pre tabuÄ¾ku `departments`
 --
 ALTER TABLE `departments`
   ADD CONSTRAINT `department_to_account` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`),
   ADD CONSTRAINT `department_to_domain` FOREIGN KEY (`domain_id`) REFERENCES `domains` (`domain_id`);
 
 --
--- Obmedzenie pre tabu¾ku `domains`
+-- Obmedzenie pre tabuÄ¾ku `domains`
 --
 ALTER TABLE `domains`
   ADD CONSTRAINT `domain_to_account` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`);
 
 --
--- Obmedzenie pre tabu¾ku `online_users`
+-- Obmedzenie pre tabuÄ¾ku `online_users`
 --
 ALTER TABLE `online_users`
   ADD CONSTRAINT `online_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
@@ -442,27 +442,27 @@ ALTER TABLE `online_users`
   ADD CONSTRAINT `online_user_to_session` FOREIGN KEY (`session_id`) REFERENCES `user_sessions` (`session_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Obmedzenie pre tabu¾ku `users`
+-- Obmedzenie pre tabuÄ¾ku `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `user_to_account` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Obmedzenie pre tabu¾ku `users_chats`
+-- Obmedzenie pre tabuÄ¾ku `users_chats`
 --
 ALTER TABLE `users_chats`
   ADD CONSTRAINT `chat_to_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `in_chat_with_to_user` FOREIGN KEY (`in_chat_with_user_id`) REFERENCES `users` (`user_id`);
 
 --
--- Obmedzenie pre tabu¾ku `user_geo_data`
+-- Obmedzenie pre tabuÄ¾ku `user_geo_data`
 --
 ALTER TABLE `user_geo_data`
   ADD CONSTRAINT `vgd_to_session` FOREIGN KEY (`session_id`) REFERENCES `user_sessions` (`session_id`),
   ADD CONSTRAINT `vgd_to_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
--- Obmedzenie pre tabu¾ku `user_pages`
+-- Obmedzenie pre tabuÄ¾ku `user_pages`
 --
 ALTER TABLE `user_pages`
   ADD CONSTRAINT `vpages_to_department` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -470,7 +470,7 @@ ALTER TABLE `user_pages`
   ADD CONSTRAINT `vpages_to_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
--- Obmedzenie pre tabu¾ku `user_sessions`
+-- Obmedzenie pre tabuÄ¾ku `user_sessions`
 --
 ALTER TABLE `user_sessions`
   ADD CONSTRAINT `user_to_session` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE CASCADE;

@@ -26,7 +26,13 @@
     <link href="css/endless-skin.css" th:href="@{/css/endless-skin.css}" rel="stylesheet"/>
 
     <!-- Datatable -->
-    <link href="css/jquery.dataTables_themeroller.css" rel="stylesheet" />
+    <link href="css/jquery.dataTables_themeroller.css" th:href="@{/css/jquery.dataTables_themeroller.css}" rel="stylesheet" />
+
+    <!-- Country flags -->
+    <link href="css/flags/flags16.css"  th:href="@{/css/flags/flags16.css}" rel="stylesheet" />
+
+    <!-- Endless -->
+    <link href="css/endless.min.css" th:href="@{/css/endless.min.css}" rel="stylesheet"/>
 
     <th:block layout:fragment="page-header">
     </th:block>
@@ -74,16 +80,16 @@
 <!--Page custom script-->
 <script>
     var NlsMessages = {
-        "session.timeout" : '<th:block th:text="#{session.timeout}"></th:block>',
-        "error.go.login":'<th:block th:text="#{error.go.login}"></th:block>',
-        "global.error":'<th:block th:text="#{global.error}"></th:block>',
-        "global.tryagain":'<th:block th:text="#{global.tryagain}"></th:block>',
-        "global.close":'<th:block th:text="#{global.close}"></th:block>',
-        "global.profileChanged":'<th:block th:text="#{global.profileChanged}"></th:block>',
-        "global.passwordChanged":'<th:block th:text="#{global.passwordChanged}"></th:block>',
-        "global.avatarUploaded":'<th:block th:text="#{global.avatarUploaded}"></th:block>',
-        "global.fileExist":'<th:block th:text="#{global.fileExist}"></th:block>',
-        "global.accountChanged":'<th:block th:text="#{global.accountChanged}"></th:block>'
+        "session.timeout" : '<th:block th:text="#{session.timeout}" />',
+        "error.go.login":'<th:block th:text="#{error.go.login}" />',
+        "global.error":'<th:block th:text="#{global.error}" />',
+        "global.tryagain":'<th:block th:text="#{global.tryagain}" />',
+        "global.close":'<th:block th:text="#{global.close}" />',
+        "global.profileChanged":'<th:block th:text="#{global.profileChanged}" />',
+        "global.passwordChanged":'<th:block th:text="#{global.passwordChanged}" />',
+        "global.avatarUploaded":'<th:block th:text="#{global.avatarUploaded}" />',
+        "global.fileExist":'<th:block th:text="#{global.fileExist}" />',
+        "global.accountChanged":'<th:block th:text="#{global.accountChanged}" />'
     };
 </script>
 

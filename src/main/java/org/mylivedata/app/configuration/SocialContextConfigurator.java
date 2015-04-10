@@ -81,7 +81,9 @@ public class SocialContextConfigurator implements SocialConfigurer
 
 	@Override
 	public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
-        return new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
+        JdbcUsersConnectionRepository jdbcUsersConnectionRepository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
+        jdbcUsersConnectionRepository.setTablePrefix("mylivedata.");
+        return jdbcUsersConnectionRepository;
 	}
 
 	@Bean

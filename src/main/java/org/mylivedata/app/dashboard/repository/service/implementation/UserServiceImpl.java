@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.mylivedata.app.configuration.domain.VisitorPrincipal;
+import org.mylivedata.app.connection.domain.VisitorPrincipal;
 import org.mylivedata.app.dashboard.domain.AccountsEntity;
 import org.mylivedata.app.dashboard.domain.AssocGroupRoleEntity;
 import org.mylivedata.app.dashboard.domain.AssocUserGroupsEntity;

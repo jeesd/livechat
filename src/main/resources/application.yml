@@ -22,12 +22,12 @@ flyway:
 thymeleaf:
   cache: false
 
-server:
-  port: 8443
-  ssl:
-    key-store: D:/MYWORK/keystore
-    key-store-password: test123456
-    key-password: test123456
+#server:
+  #port: 8443
+  #ssl:
+    #key-store: D:/MYWORK/keystore
+    #key-store-password: test123456
+    #key-password: test123456
 
 ---
 spring:

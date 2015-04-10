@@ -112,6 +112,15 @@ public class SecureUser extends SocialUser implements UserDetails {
         this.accountId = accountId;
     }
 
+    public boolean isUserInRole(String roleName) {
+        for(GrantedAuthority ath: this.getAuthorities()){
+            if(ath.getAuthority().equals(roleName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     /*
     public SecureUser(UsersEntity user) {
 

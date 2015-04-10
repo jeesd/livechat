@@ -24,7 +24,8 @@ public class DatabaseDrivenMessageSource extends AbstractMessageSource implement
     private final Logger LOGGER = LoggerFactory.getLogger(DatabaseDrivenMessageSource.class);
     public static final String DEFAULT_LANGUAGE = "en_GB";
 
-    private ResourceLoader resourceLoader;
+    @SuppressWarnings("unused")
+	private ResourceLoader resourceLoader;
 
     private final Map<String, Map<String, String>> properties = new HashMap<>();
 
@@ -63,7 +64,7 @@ public class DatabaseDrivenMessageSource extends AbstractMessageSource implement
         }
         if (textForCurrentLanguage==null) {
             //Check parent message
-            LOGGER.debug("Fallback to properties message");
+            //LOGGER.debug("Fallback to properties message");
             try {
                 textForCurrentLanguage = getParentMessageSource().getMessage(code, null, locale);
             } catch (Exception e) {
@@ -91,7 +92,7 @@ public class DatabaseDrivenMessageSource extends AbstractMessageSource implement
         assert texts!=null;
         for (MessageResourceEntity text : texts) {
             if(messageByLang.containsKey(text.getLangIsoCode()+"_"+text.getCoutryIsoCode())){
-                ((Map)messageByLang.get(text.getLangIsoCode()+"_"+text.getCoutryIsoCode())).put(text.getTextCode(),text.getTextValue());
+                messageByLang.get(text.getLangIsoCode()+"_"+text.getCoutryIsoCode()).put(text.getTextCode(),text.getTextValue());
             }else{
                 Map<String, String> messageByKey = new HashMap<>();
                 messageByKey.put(text.getTextCode(),text.getTextValue());

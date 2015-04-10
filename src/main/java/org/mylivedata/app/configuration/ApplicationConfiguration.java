@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 
 import org.mylivedata.app.configuration.resolver.DbTemplateResolver;
 import org.mylivedata.app.configuration.resource.DatabaseDrivenMessageSource;
+import org.mylivedata.app.dashboard.interceptor.DashboardInterceptor;
 import org.mylivedata.app.util.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -40,6 +41,7 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(dashboardInterceptor()).excludePathPatterns("/cometd/**");
     }
 
     @Bean
@@ -47,6 +49,11 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("language");
         return localeChangeInterceptor;
+    }
+
+    @Bean
+    public DashboardInterceptor dashboardInterceptor() {
+        return new DashboardInterceptor();
     }
 
 	@Bean

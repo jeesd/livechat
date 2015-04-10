@@ -9,7 +9,7 @@ import org.springframework.integration.dsl.core.Pollers;
 import org.springframework.scheduling.support.PeriodicTrigger;
 
 @Configuration
-public class SessionManegementFlows {
+public class SessionManagementFlows {
 	
 	@Bean
     @Description("Register session when user go online")
