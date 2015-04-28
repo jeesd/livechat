@@ -196,6 +196,21 @@ CREATE TABLE IF NOT EXISTS USER_SESSIONS (
   PRIMARY KEY (SESSION_ID)
 ) ;
 
+
+CREATE TABLE IF NOT EXISTS ip2location_db11 (
+  ip_from BIGINT NOT NULL DEFAULT '0',
+  ip_to BIGINT NOT NULL DEFAULT '0',
+  country_code char(2) DEFAULT NULL,
+  country_name varchar(64) DEFAULT NULL,
+  region_name varchar(128) DEFAULT NULL,
+  city_name varchar(128) DEFAULT NULL,
+  latitude double DEFAULT NULL,
+  longitude double DEFAULT NULL,
+  zip_code varchar(30) DEFAULT NULL,
+  time_zone varchar(8) DEFAULT NULL,
+  PRIMARY KEY (ip_from,ip_to)
+) ;
+
 INSERT INTO ROLES (role_id, role_name, description) VALUES
 (1, 'ROLE_USER', 'has rights to use dashboard');
 INSERT INTO ROLES (role_id, role_name, description) VALUES

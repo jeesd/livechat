@@ -1,5 +1,9 @@
 package org.mylivedata.app.connection.domain;
 
+import org.mylivedata.app.dashboard.domain.custom.SecureUser;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
 import java.util.Locale;
 
 /**
@@ -13,8 +17,16 @@ public class VisitorPrincipal {
     private String userHashId;
     private String remoteAddress;
     private String screenWH;
-
     private String referrer;
+    private SecureUser secureUser;
+
+    public SecureUser getSecureUser() {
+        return secureUser;
+    }
+
+    public void setSecureUser(SecureUser secureUser) {
+        this.secureUser = secureUser;
+    }
 
     public String getReferrer() {
         return referrer;

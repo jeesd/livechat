@@ -14,8 +14,8 @@ import javax.persistence.Table;
 @Table(name = "ip2location_db11", schema = "", catalog = "mylivedata")
 @IdClass(Ip2LocationDb11EntityPK.class)
 public class Ip2LocationDb11Entity {
-    private Integer ipFrom;
-    private Integer ipTo;
+    private Long ipFrom;
+    private Long ipTo;
     private String countryCode;
     private String countryName;
     private String regionName;
@@ -28,22 +28,22 @@ public class Ip2LocationDb11Entity {
     @Id
     @Basic
     @Column(name = "ip_from", nullable = false, insertable = true, updatable = true)
-    public Integer getIpFrom() {
+    public Long getIpFrom() {
         return ipFrom;
     }
 
-    public void setIpFrom(Integer ipFrom) {
+    public void setIpFrom(Long ipFrom) {
         this.ipFrom = ipFrom;
     }
 
     @Id
     @Basic
     @Column(name = "ip_to", nullable = false, insertable = true, updatable = true)
-    public Integer getIpTo() {
+    public Long getIpTo() {
         return ipTo;
     }
 
-    public void setIpTo(Integer ipTo) {
+    public void setIpTo(Long ipTo) {
         this.ipTo = ipTo;
     }
 

@@ -1,12 +1,13 @@
 package org.mylivedata.app.connection;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by lubo08 on 11.11.2014.
  */
-public class BrowserConnectionManager {
+public class BrowserConnectionManager implements Serializable {
 
     private List<SessionInfo> sessionInfos = new ArrayList<>();
     private String connectionType;

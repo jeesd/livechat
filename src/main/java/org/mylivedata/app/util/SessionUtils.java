@@ -341,6 +341,7 @@ public class SessionUtils {
     }
 
     public void addChatSession(String browserId, String sessionId,String transportName, String userHashId){
+        cacheManager.getCacheManager().getTransactionController().begin();
         BrowserConnectionManager browserConnection = connectionsCache.get(browserId)!=null?(BrowserConnectionManager)connectionsCache.get(browserId).get():null;
         if(browserConnection == null){
             browserConnection = new BrowserConnectionManager();
@@ -348,13 +349,16 @@ public class SessionUtils {
         browserConnection.addSessionId(new SessionInfo(sessionId,userHashId));
         browserConnection.setConnectionType(transportName);
         connectionsCache.put(browserId,browserConnection);
+        cacheManager.getCacheManager().getTransactionController().commit();
     }
     public void  removeChatSession(String browserId, String sessionId){
+        cacheManager.getCacheManager().getTransactionController().begin();
         BrowserConnectionManager browserConnection = connectionsCache.get(browserId)!=null?(BrowserConnectionManager)connectionsCache.get(browserId).get():null;
         if(browserConnection != null) {
             browserConnection.removeSessionId(sessionId);
             connectionsCache.put(browserId, browserConnection);
         }
+        cacheManager.getCacheManager().getTransactionController().commit();
     }
     public void  updateChatSession(String browserId, String sessionId, String userHashId){
         BrowserConnectionManager browserConnection = connectionsCache.get(browserId)!=null?(BrowserConnectionManager)connectionsCache.get(browserId).get():null;

@@ -51,16 +51,16 @@ public class AuthorizationService {
     }
 
 
-
-    //@ServiceActivator(inputChannel = "authorizeChatUser", outputChannel = "canHandshake")
-    public SecureUser validateDomainVsAccount(VisitorPrincipal visitorPrincipal) {
+    public boolean validateDomainVsAccount(VisitorPrincipal visitorPrincipal) {
 
         try {
             if(!accountService.checkAccountIdVsUrl(visitorPrincipal.getOrigin(),visitorPrincipal.getAccountIdHash()))
-                return null;
+                return false;
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
+        return true;
+        /*
         //server.getContext().getURL()
         SecureUser user = userService.getSecureUserByHash(visitorPrincipal);
         Map<String,Object> chaUserData = new HashMap<>();
@@ -77,6 +77,7 @@ public class AuthorizationService {
         user.setLocale(visitorPrincipal.getLocale());
 
         return user;
+        */
     }
 
 }

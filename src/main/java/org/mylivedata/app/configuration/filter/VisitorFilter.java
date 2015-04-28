@@ -33,7 +33,7 @@ public class VisitorFilter extends GenericFilterBean {
         ((HttpServletResponse) response).setHeader("p3p", "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\"");
         HttpSession session =
                 httpRequest.getSession();
-        VisitorPrincipal principal = new VisitorPrincipal();
+        //VisitorPrincipal principal = new VisitorPrincipal(null,null,null);
 
         // try set only tracking cookie.
         if(httpRequest.getRequestURL().toString().contains("chat/template")) {
@@ -56,7 +56,8 @@ public class VisitorFilter extends GenericFilterBean {
                 ((HttpServletResponse) response).addCookie(cookie);
                 session.setAttribute("cuhi",uuid);
             }
-            principal.setUserHashId(userIdentityHash);
+            session.setAttribute("userIdentityHash",userIdentityHash);
+            //principal.setUserHashId(userIdentityHash);
         }
 
             //sessionLogGateway.userReloadInfo(secUser,httpRequest.getParameter("departmentKey"),originUrl);
@@ -75,13 +76,13 @@ public class VisitorFilter extends GenericFilterBean {
                 LOGGER.error(e.getMessage());
             }
 
-            principal.setOrigin(originUrl!=null?originUrl.getHost():null);
-            principal.setReferrer(refererUrl!=null?refererUrl.getHost():null);
-            principal.setAccountIdHash(httpRequest.getParameter("accountId"));
-            principal.setDepartment(httpRequest.getParameter("departmentKey"));
-            principal.setLocale(httpRequest.getParameter("language")!=null?(new Locale(httpRequest.getParameter("language"))):RequestContextUtils.getLocale(httpRequest));
-            principal.setRemoteAddress(httpRequest.getRemoteAddr());
-            session.setAttribute("principal",principal);
+            //principal.setOrigin(originUrl!=null?originUrl.getHost():null);
+            //principal.setReferrer(refererUrl!=null?refererUrl.getHost():null);
+            //principal.setAccountIdHash(httpRequest.getParameter("accountId"));
+            //principal.setDepartment(httpRequest.getParameter("departmentKey"));
+            //principal.setLocale(httpRequest.getParameter("language")!=null?(new Locale(httpRequest.getParameter("language"))):RequestContextUtils.getLocale(httpRequest));
+            //principal.setRemoteAddress(httpRequest.getRemoteAddr());
+            //session.setAttribute("principal",principal);
 
 
         chain.doFilter(request, response);

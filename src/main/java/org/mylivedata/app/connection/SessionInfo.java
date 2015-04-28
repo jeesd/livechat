@@ -1,9 +1,11 @@
 package org.mylivedata.app.connection;
 
+import java.io.Serializable;
+
 /**
  * Created by lubo08 on 13.2.2015.
  */
-public class SessionInfo {
+public class SessionInfo implements Serializable {
 
     public SessionInfo (String cometSessionId,  String userHashId) {
         this.cometSessionId = cometSessionId;

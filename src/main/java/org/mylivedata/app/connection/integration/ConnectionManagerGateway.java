@@ -23,7 +23,9 @@ public interface ConnectionManagerGateway {
     Future<Integer> notifyUserGoOffline(@Payload SecureUser user);
 
     @Gateway(requestChannel = "authorizeChatUser", replyChannel = "canHandshake")
-    public SecureUser authorizeChatUser(@Payload VisitorPrincipal visitorPrincipal,
+    public boolean authorizeChatUser(@Payload VisitorPrincipal visitorPrincipal,
                                         @Header("BID") String bid,
                                         @Header("CSID") String currentCometSessionId);
+
+
 }

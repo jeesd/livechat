@@ -54,9 +54,7 @@ public class SessionManagementFlows {
     public IntegrationFlow authorizeAnonymousChatUser() {
         return IntegrationFlows.from("authorizeChatUser")
                 .handle("authorizationService", "validateUserHashId")
-                // validate if visitor can connect and return user detail.
-                .handle("authorizationService", "validateDomainVsAccount")
                 .get();
     }
-	
+
 }

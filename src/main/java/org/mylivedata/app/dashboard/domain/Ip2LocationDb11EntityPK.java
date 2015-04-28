@@ -14,28 +14,28 @@ public class Ip2LocationDb11EntityPK implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 3452374593246467205L;
-	private Integer ipFrom;
-    private Integer ipTo;
+	private Long ipFrom;
+    private Long ipTo;
 
     @Column(name = "ip_from", nullable = false, insertable = true, updatable = true)
     @Basic
     @Id
-    public Integer getIpFrom() {
+    public Long getIpFrom() {
         return ipFrom;
     }
 
-    public void setIpFrom(Integer ipFrom) {
+    public void setIpFrom(Long ipFrom) {
         this.ipFrom = ipFrom;
     }
 
     @Column(name = "ip_to", nullable = false, insertable = true, updatable = true)
     @Basic
     @Id
-    public Integer getIpTo() {
+    public Long getIpTo() {
         return ipTo;
     }
 
-    public void setIpTo(Integer ipTo) {
+    public void setIpTo(Long ipTo) {
         this.ipTo = ipTo;
     }
 

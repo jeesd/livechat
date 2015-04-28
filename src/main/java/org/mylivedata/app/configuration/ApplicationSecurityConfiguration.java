@@ -116,7 +116,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
         // @formatter:off
             http
                     //.addFilterBefore(cometdPreAuthenticatedProcessingFilter(authenticationManagerBean()), AnonymousAuthenticationFilter.class)
-                    .addFilterBefore(visitorFilter(), SecurityContextPersistenceFilter.class)
+                    //.addFilterBefore(visitorFilter(), SecurityContextPersistenceFilter.class)
                     .addFilterAfter(ajaxRedirectFilter(), ExceptionTranslationFilter.class)
                     .formLogin()
                     .usernameParameter("j_username")
