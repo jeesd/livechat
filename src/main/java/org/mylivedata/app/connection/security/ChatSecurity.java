@@ -108,8 +108,8 @@ public class ChatSecurity extends DefaultSecurityPolicy {
             handshakeReply.getExt(true).put("accountId", user.getAccountIdHash());
             handshakeReply.getExt(true).put("userName", user.getSecureUser().getUsername());
 
-
             logger.debug("Allowed chat for anonymous website chat user: ");
+            return true;
         }
 
         logger.info("Blocked chat access is unusual check if too much happening");
@@ -129,12 +129,12 @@ public class ChatSecurity extends DefaultSecurityPolicy {
 
     private VisitorPrincipal createAnonymousUser(BayeuxServer server, Map<String, Object> clientData, String browserId, String sessionID) {
         VisitorPrincipal visitorPrincipal = new VisitorPrincipal();
-        visitorPrincipal.setSecureUser(userService.getSecureUserByHash(visitorPrincipal));
         visitorPrincipal.setOrigin(server.getContext().getHeader("Origin"));
         visitorPrincipal.setReferrer(server.getContext().getHeader("Referer"));
         visitorPrincipal.setRemoteAddress(server.getContext().getRemoteAddress().getHostString());
         visitorPrincipal.setAccountIdHash((String)clientData.get("accountID"));
         visitorPrincipal.setScreenWH((String)clientData.get("wh"));
+        visitorPrincipal.setSecureUser(userService.getSecureUserByHash(visitorPrincipal));
         //addUserIntoCache(visitorPrincipal,server);
         return visitorPrincipal;
     }

@@ -368,7 +368,9 @@ public class SessionUtils {
         }
     }
     public BrowserConnectionManager getBrowserConnectionsManager(String browserId){
+        cacheManager.getCacheManager().getTransactionController().begin();
         BrowserConnectionManager browserConnection = connectionsCache.get(browserId)!=null?(BrowserConnectionManager)connectionsCache.get(browserId).get():null;
+        cacheManager.getCacheManager().getTransactionController().commit();
         return browserConnection;
     }
     public List<Result> getMyOperators(Long accountId){
