@@ -1,5 +1,6 @@
 package org.mylivedata.app.dashboard.repository.service.implementation;
 
+import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -235,7 +236,11 @@ public class UserServiceImpl implements UserService {
         List<DomainsEntity> domains;
 
         try{
-            domains = domainsEntityRepository.findByDomain(principal.getOrigin());
+            URL originUrl = null;
+            if(principal.getOrigin() != null){
+                originUrl = new URL(principal.getOrigin());
+            }
+            domains = domainsEntityRepository.findByDomain(originUrl.getHost());
         }catch (Exception e){
             LOGGER.error(e.getMessage());
             throw new UsernameNotFoundException(e.getMessage());
