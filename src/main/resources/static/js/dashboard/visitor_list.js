@@ -11,6 +11,8 @@ define(['jquery','bootstrap','datatables'], function($){
                 "processing": true,
                 "serverSide": true,
                 "jQueryUI": true,
+                "autoWidth": false,
+                "deferRender": true,
                 "pagingType": "full_numbers",
                 "columns": [
                     { "data": "status",
