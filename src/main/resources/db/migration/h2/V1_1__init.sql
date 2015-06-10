@@ -232,7 +232,7 @@ INSERT INTO USERS (user_id, name, surrname, email, password, registration, last_
 (1, 'lubo08', 'Developer', 'lubo08@hotmail.com', '$2a$10$8A.CHyB46V9Lli7911ROC.rsnhQN1XLl5ioyKdsV0cPkWV69zXAYu', '2014-12-15 13:08:46', '2014-04-15 23:14:44', NULL, NULL, 1, 'true', NULL);
 
 INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description) VALUES
-(1, '<div class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{onlineMessage}">CAN WE <br/> HELP YOU?</div><div id="chatNotificationIcon" class="notificationChat">1</div></div>', NULL, 'bubble_style', 'bubble', NULL);
+(1, '<div class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{offlineMessage}">CAN WE <br/> HELP YOU?</div><div id="chatNotificationIcon" class="notificationChat">1</div></div>', NULL, 'silver_chat', 'chat_bar_offline', NULL);
 
 INSERT INTO DOMAINS (domain_id, domain, description, account_id, visible_offline) VALUES
 (1, 'testweb.com', '', 1, 'Yes');
@@ -258,7 +258,7 @@ INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value 
 INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(38, 'en', 'newMessageNotification', 'YOU HAVE<br />NEW MESSAGE', 'GB');
 INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(39, 'en', 'registrationText', 'Hello! It''s really great to see you here.<br/> Tell us just a few details about you and we are ready<br/> to go!', 'GB');
 INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(40, 'sk', 'welcomeText', 'Vítajte na našej podpore', 'SK');
-INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(41, 'sk', 'offlineMessage', 'NECHAJTE NÁM<br /> SPRÁVU', 'SK');
+INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(41, 'sk', 'offlineMessage', 'ZANECHAŤ<br /> SPRÁVU', 'SK');
 INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(42, 'sk', 'leftOfflineMessage', 'Momntálne tu nie sme. <br /> Prosím nechajte nám správu a my Vám odpovieme v co najkratšom case.', 'SK');
 INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(43, 'sk', 'onlineMessage', 'MOŽEME VÁM<br /> POMOCT?', 'SK');
 INSERT INTO  message_resource  ( id ,  lang_iso_code ,  text_code ,  text_value ,  coutry_iso_code ) VALUES(44, 'sk', 'requesting', '<div class="loader_#{template} loader"></div><div style="font-size:11px">POSIELAM POŽIADAVKU</div>', 'SK');

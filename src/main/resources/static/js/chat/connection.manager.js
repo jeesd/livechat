@@ -481,7 +481,7 @@ define(['jquery'], function($){
 
         $.ajax({
             type : "GET",
-            url  : config.contextPath+"/chat/template/html"+urlParams,
+            url  : config.contextPath+"/chat/template/html/silver_chat/chat_bar_offline"+urlParams,
             xhrFields: {
                 withCredentials: true
             },

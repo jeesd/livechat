@@ -12,6 +12,7 @@ logging:
      org.mylivedata.app: DEBUG
      org.springframework: INFO
      org.hibernate: INFO
+     org.cometd: DEBUG
 
 datasource:
   initialize: false

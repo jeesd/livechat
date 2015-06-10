@@ -20,6 +20,7 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.embedded.jetty.JettyEmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.jetty.JettyServerCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.ServletContext;
@@ -27,6 +28,7 @@ import javax.servlet.ServletException;
 
 @Configuration
 @EnableAutoConfiguration
+@ComponentScan("org.mylivedata.app")
 public class WebsocketConfiguration {
 	
 	private static Logger logger = LoggerFactory.getLogger(WebsocketConfiguration.class);
@@ -110,6 +112,7 @@ public class WebsocketConfiguration {
 	        @Override
 	        public void onStartup(ServletContext servletContext) throws ServletException {
 	            servletContext.setAttribute(BayeuxServer.ATTRIBUTE, bayeuxServer(servletContext));
+                
 	        }
 	    };
 	}

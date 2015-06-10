@@ -43,11 +43,11 @@ public class DbTemplateResolver extends TemplateResolver {
             String template = null;//templateRepo.findOne(Long.valueOf(resourceName));
             try {
                 if(resourceName.startsWith(PREFIX_TYPE_HTML)) {
-                    template = layoutService.getLayoutHtml(resourceName.substring(PREFIX_TYPE_HTML.length()), "bubble");
+                    template = layoutService.getLayoutHtml(resourceName.split(":")[1], resourceName.split(":")[2]);
                 } else if(resourceName.startsWith(PREFIX_TYPE_CSS)) {
-                    template = layoutService.getLayoutCss(resourceName.substring(PREFIX_TYPE_CSS.length()), "bubble");
+                    template = layoutService.getLayoutCss(resourceName.split(":")[1], resourceName.split(":")[2]);
                 } else {
-                    template = layoutService.getLayoutHtml("bubble_style", "bubble");
+                    template = layoutService.getLayoutHtml("silver_chat", "chat_bar");
                 }
             } catch (Exception e) {
                 e.printStackTrace();

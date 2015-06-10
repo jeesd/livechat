@@ -52,10 +52,15 @@ public class DashBoardPageController {
         return "layout";
     }
 
-    @RequestMapping(value="/chat/template/{type}", method= RequestMethod.GET)
-    public String loadBubbleHtml(Model m, HttpSession session, @PathVariable String type) {
+    @RequestMapping(value="/chat/template/{type}/{style}/{component}", method= RequestMethod.GET)
+    public String loadBubbleHtml(
+            Model m,
+            HttpSession session,
+            @PathVariable String type,
+            @PathVariable String style,
+            @PathVariable String component) {
 
-        return "db:"+type+":bubble_style";
+        return "db:"+type+":"+style+":"+component;
     }
 
     @RequestMapping(value="/timeline", method= RequestMethod.GET)
