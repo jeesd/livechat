@@ -25,7 +25,6 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import java.util.Locale;
 
 @Configuration
-@EnableAutoConfiguration
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Autowired

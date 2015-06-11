@@ -1,5 +1,6 @@
 package org.mylivedata.app.configuration;
 
+import org.cometd.annotation.ServerAnnotationProcessor;
 import org.cometd.bayeux.server.BayeuxServer;
 import org.cometd.server.BayeuxServerImpl;
 import org.cometd.server.CometDServlet;
@@ -12,7 +13,9 @@ import org.mylivedata.app.connection.security.ChatSecurity;
 import org.mylivedata.app.connection.session.ChatSessionListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
@@ -29,7 +32,7 @@ import javax.servlet.ServletException;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan("org.mylivedata.app")
-public class WebsocketConfiguration {
+public class WebsocketConfiguration implements DestructionAwareBeanPostProcessor{
 	
 	private static Logger logger = LoggerFactory.getLogger(WebsocketConfiguration.class);
 
@@ -43,7 +46,9 @@ public class WebsocketConfiguration {
     private int httpsPort = 8443;
     @Value("${http.port}")
     private int httpPort = 8080;
-
+    
+    private ServerAnnotationProcessor processor;
+    
 	@Bean
 	public JettyEmbeddedServletContainerFactory servletContainerFactory() {
 		JettyEmbeddedServletContainerFactory factory = new JettyEmbeddedServletContainerFactory();
@@ -117,7 +122,7 @@ public class WebsocketConfiguration {
 	    };
 	}
 	
-	@Bean
+	@Bean(initMethod = "start", destroyMethod = "stop")
     public BayeuxServer bayeuxServer(ServletContext servletContext)
     {
 		BayeuxServerImpl bean = new BayeuxServerImpl();
@@ -138,6 +143,29 @@ public class WebsocketConfiguration {
     @Bean
     public ChatSessionListener chatSessionListener() {
         return new ChatSessionListener();
+    }
+
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        if(bean instanceof BayeuxServer){
+            this.processor = new ServerAnnotationProcessor((BayeuxServer)bean);
+        }
+        if(this.processor != null){
+            processor.processDependencies(bean);
+            processor.processConfigurations(bean);
+            processor.processCallbacks(bean);
+        }
+        return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
+    @Override
+    public void postProcessBeforeDestruction(Object bean, String beanName) throws BeansException {
+        processor.deprocessCallbacks(bean);
     }
 
 }

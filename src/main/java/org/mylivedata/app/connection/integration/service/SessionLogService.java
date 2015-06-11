@@ -41,7 +41,7 @@ public class SessionLogService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(SessionLogService.class);
 
-    @Inject
+    @Autowired
     private DashboardService dashboardService;
 
     @Autowired
