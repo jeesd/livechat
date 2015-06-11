@@ -356,7 +356,7 @@ define(['jquery'], function($){
     var CometBinding = function(cometd, liveCommunicator, urlParam) {
 
         var config = {
-            contextPath: $(location).attr('protocol')+'//appchatserver.com:'+($(location).attr('protocol')=='https:'?'8443':'8080')
+            contextPath: $(location).attr('protocol')+'//localhost:'+($(location).attr('protocol')=='https:'?'8443':'8080')
         };
         var cometURL = config.contextPath+"/cometd";
 
@@ -449,13 +449,23 @@ define(['jquery'], function($){
             liveCommunicator.connected = message.successful === true;
             if (!wasConnected && liveCommunicator.connected) {
                 cometd.remoteCall('/layout', {
-                    foo: "bar"
+                    style: "silver_chat",
+                    component: "chat_bar_online"
                 }, 5000, function(response)
                 {
                     if (response.successful)
                     {
                         // The action was performed
                         var data = response.data;
+                        $("div[data-widget='mychatsupport']").html(data).animate({
+                            opacity: 1
+                        }, {
+                            duration: 2000,
+                            specialEasing: {
+                                width: "linear",
+                                height: "easeOutBounce"
+                            }
+                        });
                     }
                 });
 
