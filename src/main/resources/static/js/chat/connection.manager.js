@@ -115,6 +115,7 @@ define(['jquery'], function($){
         this.previousValues = {};
         this.connected = false;
         this.clientId = gClientId;
+        this.widget = {};
 
         var storageHandler = function() { self._onStorageEvent.apply(self, arguments); };
         if (window.attachEvent) { document.attachEvent('onstorage', storageHandler); }
@@ -356,7 +357,7 @@ define(['jquery'], function($){
     var CometBinding = function(cometd, liveCommunicator, urlParam) {
 
         var config = {
-            contextPath: $(location).attr('protocol')+'//localhost:'+($(location).attr('protocol')=='https:'?'8443':'8080')
+            contextPath: $(location).attr('protocol')+'//appchatserver.com:'+($(location).attr('protocol')=='https:'?'8443':'8080')
         };
         var cometURL = config.contextPath+"/cometd";
 
@@ -448,27 +449,6 @@ define(['jquery'], function($){
             var wasConnected = liveCommunicator.connected;
             liveCommunicator.connected = message.successful === true;
             if (!wasConnected && liveCommunicator.connected) {
-                cometd.remoteCall('/layout', {
-                    style: "silver_chat",
-                    component: "chat_bar_online"
-                }, 5000, function(response)
-                {
-                    if (response.successful)
-                    {
-                        // The action was performed
-                        var data = response.data;
-                        $("div[data-widget='mychatsupport']").html(data).animate({
-                            opacity: 1
-                        }, {
-                            duration: 2000,
-                            specialEasing: {
-                                width: "linear",
-                                height: "easeOutBounce"
-                            }
-                        });
-                    }
-                });
-
                 liveCommunicator._connectionEstablished();
                 liveCommunicator._trigger('_connectionEstablished');
             }
@@ -498,6 +478,7 @@ define(['jquery'], function($){
             crossDomain: true,
             success : function(data){
                 var parsedContent = $(data).html();
+                liveCommunicator.widget['silver_chat'] = {chat_bar_offline:parsedContent};
                 $("div[data-widget='mychatsupport']").html(parsedContent).animate({
                     opacity: 1
                 }, {

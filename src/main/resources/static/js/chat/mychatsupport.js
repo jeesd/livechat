@@ -66,10 +66,49 @@ function InitMyChatSupportLiveChat()
 
                 var conn = connection.getInstance();
                 conn.bind(cometd);
-
+                // call online layout as connection was successful.
                 conn._on('_connectionEstablished',function (){
-
+                    cometd.remoteCall('/layout', {
+                        style: "silver_chat",
+                        component: "chat_bar_online"
+                    }, 5000, function(response)
+                    {
+                        if (response.successful)
+                        {
+                            // The action was performed
+                            var data = response.data;
+                            $("div[data-widget='mychatsupport']").html(data).animate({
+                                opacity: 1
+                            }, {
+                                duration: 2000,
+                                specialEasing: {
+                                    width: "linear",
+                                    height: "easeOutBounce"
+                                }
+                            });
+                        }
+                    });
                 });
+                conn._on('_connectionBroken',function (){
+                    $("div[data-widget='mychatsupport']").html(conn.widget.silver_chat.chat_bar_offline).animate({
+                        opacity: 1
+                    }, {
+                        duration: 2000,
+                        specialEasing: {
+                            width: "linear",
+                            height: "easeOutBounce"
+                        }
+                    });
+                });
+                $("div[data-widget='mychatsupport']").on('click',function () {
+                    var component;
+                    if(conn.connected === true){
+                        component = '';
+                    }
+
+                    alert('clicked');
+                });
+
 
             });
 

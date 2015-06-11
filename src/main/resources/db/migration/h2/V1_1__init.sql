@@ -233,6 +233,8 @@ INSERT INTO USERS (user_id, name, surrname, email, password, registration, last_
 
 INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description) VALUES
 (1, '<div class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{offlineMessage}">CAN WE <br/> HELP YOU?</div><div id="chatNotificationIcon" class="notificationChat">1</div></div>', NULL, 'silver_chat', 'chat_bar_offline', NULL);
+INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description) VALUES
+  (2, '<div class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{onlineMessage}">CAN WE <br/> HELP YOU?</div></div>', NULL, 'silver_chat', 'chat_bar_online', NULL);
 
 INSERT INTO DOMAINS (domain_id, domain, description, account_id, visible_offline) VALUES
 (1, 'testweb.com', '', 1, 'Yes');
