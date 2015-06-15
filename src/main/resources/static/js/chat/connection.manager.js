@@ -316,6 +316,48 @@ define(['jquery'], function($){
         console.log('Connection closed');
     };
 
+    LiveCommunicator.prototype.widgetOnlineState = function () {
+        console.log('Online state setup');
+        var self = this;
+
+        $("div[data-widget='mychatsupport']").replaceWith(self.widget.chat_bar_online).animate({
+            opacity: 1
+        }, {
+            duration: 2000,
+            specialEasing: {
+                width: "linear",
+                height: "easeOutBounce"
+            }
+        });
+
+        $("div[data-widget='mychatsupport']").on('click', function(){
+            self.widgetRequestState();
+        });
+
+    };
+
+    LiveCommunicator.prototype.widgetRequestState = function () {
+        console.log('Request state setup');
+        var self = this;
+
+        $("div[data-widget='mychatsupport']").replaceWith(self.widget.chat_request).animate({
+            opacity: 1
+        }, {
+            duration: 2000,
+            specialEasing: {
+                width: "linear",
+                height: "easeOutBounce"
+            }
+        });
+
+        self.emit('request',' ');
+
+        $("div[data-widget='mychatsupport']").on('click', function(){
+            cometd.publish('/client/info', { department: $("div[data-widget='mychatsupport']").attr("data-department") });
+        });
+
+    };
+
     LiveCommunicator.prototype.bind = function(object) {
         for (var i = 0; i < LiveCommunicator.bindings.length; i++) {
             var binding = LiveCommunicator.bindings[i].factory(object, this);
@@ -366,7 +408,6 @@ define(['jquery'], function($){
                 cookieMaxAge: 30
             });
         });
-
 
         var params = { };
 
@@ -449,6 +490,20 @@ define(['jquery'], function($){
             var wasConnected = liveCommunicator.connected;
             liveCommunicator.connected = message.successful === true;
             if (!wasConnected && liveCommunicator.connected) {
+                cometd.remoteCall('/layout', {
+                    style: "silver_chat"
+                }, 5000, function(response)
+                {
+                    if (response.successful)
+                    {
+                        // The action was performed
+                        var data = response.data;
+                        liveCommunicator.widget = data;
+                        liveCommunicator.widgetOnlineState();
+                        //localStorage.setItem("ChatWidget",JSON.stringify(data));
+
+                    }
+                });
                 liveCommunicator._connectionEstablished();
                 liveCommunicator._trigger('_connectionEstablished');
             }
@@ -466,6 +521,11 @@ define(['jquery'], function($){
                 liveCommunicator._trigger('_timeOut');
             }
         });
+
+        liveCommunicator._on('emit', function(name, message) {
+            cometd.publish('/client/'+name, message);
+        });
+
         var languageCode =   $("div[data-widget='mychatsupport']").attr("data-language");
         var accountId = $("div[data-widget='mychatsupport']").attr("data-account-id");
 
@@ -478,7 +538,7 @@ define(['jquery'], function($){
             crossDomain: true,
             success : function(data){
                 var parsedContent = $(data).html();
-                liveCommunicator.widget['silver_chat'] = {chat_bar_offline:parsedContent};
+                //liveCommunicator.widget['silver_chat'] = {chat_bar_offline:parsedContent};
                 $("div[data-widget='mychatsupport']").html(parsedContent).animate({
                     opacity: 1
                 }, {

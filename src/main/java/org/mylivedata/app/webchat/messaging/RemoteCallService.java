@@ -12,6 +12,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,7 +27,7 @@ public class RemoteCallService {
     private SpringTemplateEngine templateEngine;
     
     @RemoteCall("layout")
-    public void retrieveContacts(final RemoteCall.Caller caller, final Object data)
+    public void retrieveLayout(final RemoteCall.Caller caller, final Object data)
     {
         // Perform a lengthy query to the database to
         // retrieve the contacts in a separate thread.
@@ -41,10 +42,15 @@ public class RemoteCallService {
                     String style = (String)arguments.get("style");
                     String component = (String)arguments.get("component");
                     final Context ctx = new Context(LocaleContextHolder.getLocale());
-                    final String chat = templateEngine.process("db:html:"+style+":"+component, ctx);
+                    //final String chat = templateEngine.process("db:html:"+style+":"+component, ctx);
+
+                    final Map<String,Object> widget = new HashMap<String, Object>();
+                    widget.put("chat_bar_offline",templateEngine.process("db:html:"+style+":chat_bar_offline", ctx));
+                    widget.put("chat_bar_online",templateEngine.process("db:html:"+style+":chat_bar_online", ctx));
+                    widget.put("chat_request",templateEngine.process("db:html:"+style+":chat_request", ctx));
 
                     // We got the contacts, respond.
-                    caller.result(chat);
+                    caller.result(widget);
                 }
                 catch (Exception x)
                 {

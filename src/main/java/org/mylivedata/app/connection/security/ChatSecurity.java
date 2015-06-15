@@ -49,7 +49,7 @@ public class ChatSecurity extends DefaultSecurityPolicy {
             return true;
 
         Map<String, Object> ext = message.getExt();
-
+        ServerMessage.Mutable handshakeReply = message.getAssociated();
         SecurityContext securityContext = (SecurityContext) server.getContext().getHttpSessionAttribute("SPRING_SECURITY_CONTEXT");
 
         //if user is not authorized by spring security module then validate and create anonymous user for website chat
@@ -63,6 +63,7 @@ public class ChatSecurity extends DefaultSecurityPolicy {
                 }
                 session.setAttribute("user", createUser(server, secUser));
                 session.setAttribute("browserId", server.getContext().getHttpSessionId());
+                handshakeReply.getExt(true).put("accountId", secUser.getAccountIdentity());
                 logger.debug("Allowed chat for authorized dashboard user: "+secUser.getEmail());
                 return true;
             } else if (secUser != null && secUser.isUserInRole("ROLE_VISITOR")) {
@@ -103,7 +104,7 @@ public class ChatSecurity extends DefaultSecurityPolicy {
             session.setAttribute("transportName", transportName);
             session.setAttribute("browserId", browserId);
             // set reply info for browser id
-            ServerMessage.Mutable handshakeReply = message.getAssociated();
+
             handshakeReply.getExt(true).put("BID", browserId);
             handshakeReply.getExt(true).put("accountId", user.getAccountIdHash());
             handshakeReply.getExt(true).put("userName", user.getSecureUser().getUsername());

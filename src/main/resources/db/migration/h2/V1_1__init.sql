@@ -50,7 +50,8 @@ CREATE TABLE IF NOT EXISTS DEFAULT_LAYOUTS (
   CSS varchar ,
   NAME varchar(50) DEFAULT NULL,
   FRAGMENT varchar(50) DEFAULT NULL,
-  DESCRIPTION varchar(500) DEFAULT NULL
+  DESCRIPTION varchar(500) DEFAULT NULL,
+  VERSION varchar(50)
 ) ;
 
 CREATE TABLE IF NOT EXISTS DEPARTMENTS (
@@ -231,10 +232,65 @@ INSERT INTO ACCOUNTS (account_id, owner_id, billing_email, company_name, street_
 INSERT INTO USERS (user_id, name, surrname, email, password, registration, last_login, last_ip, identification_hash, account_id, is_credentials_non_expired, image_url) VALUES
 (1, 'lubo08', 'Developer', 'lubo08@hotmail.com', '$2a$10$8A.CHyB46V9Lli7911ROC.rsnhQN1XLl5ioyKdsV0cPkWV69zXAYu', '2014-12-15 13:08:46', '2014-04-15 23:14:44', NULL, NULL, 1, 'true', NULL);
 
-INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description) VALUES
-(1, '<div class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{offlineMessage}">CAN WE <br/> HELP YOU?</div><div id="chatNotificationIcon" class="notificationChat">1</div></div>', NULL, 'silver_chat', 'chat_bar_offline', NULL);
-INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description) VALUES
-  (2, '<div class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{onlineMessage}">CAN WE <br/> HELP YOU?</div></div>', NULL, 'silver_chat', 'chat_bar_online', NULL);
+INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description, version) VALUES
+(1, '<div data-widget="mychatsupport" class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{offlineMessage}">CAN WE <br/> HELP YOU?</div><div id="chatNotificationIcon" class="notificationChat">1</div></div>', NULL, 'silver_chat', 'chat_bar_offline', NULL,'1.0');
+INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description, version) VALUES
+  (2, '<div data-widget="mychatsupport" class="chatBarContainerCss chatBarBcg_silver"><div id="chatBarNavigation" class="chatBarNavigationCss hideButton_silver"></div><div id="chatBarText" class="chatBarTextCss" th:utext="#{onlineMessage}">CAN WE <br/> HELP YOU?</div></div>', NULL, 'silver_chat', 'chat_bar_online', NULL,'1.0');
+INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description, version) VALUES
+  (3, '<div data-widget="mychatsupport" id="chatContainer" class="chatContainer">
+	<div class="chatContainerInner">
+		<div class="styleChat borderColor_silver">
+			<div class="stMain borderColorLightGrey_silver bcgColor_silver">
+				<div class="mNavigations">
+					<div id="closeButton" class="dmcButtons closeX_silver"></div>
+					<div id="maximizeButton" class="dmcButtons maxArrow_silver"></div>
+					<div id="hideButton" class="dmcButtons downArrow_silver"></div>
+				</div>
+				<div id="welcommeText" class="mWelcommeText">
+					Welcome to New Look Holiday
+				</div>
+				<div class="mChatContainer">
+					<div class="mcOperContainer mcOperContainer_silver bcgColorStrong_silver">
+						<div class="mcOperatorContainerInner borderColorStrong_silver">
+							<div id="operatorPhoto" class="mcoPhoto">
+								<img src="/img/user.jpg" alt="Operator picture" height="48" width="48" />
+							</div>
+							<div class="mcolabel">
+								<div id="operatorLabel" class="mcoName">Lucy</div>
+								<div id="operatorText" class="mcoPosition">Support Operator</div>
+							</div>
+						</div>
+					</div>
+					<div id="chatMessagesContainer" class="mcChatArea">
+						<div id="chatMessageContainer" class="mcaChatMsg">
+							<div class="mcaChatMsgInner borderColorStrong_silver">
+								<div id="chatLabel" class="mcaName mcaColor_silver">Lucy</div>
+								<div id="chatText" class="mcaChatText">Hello how can I help you?</div>
+							</div>
+						</div>
+						<div id="chatMessageContainerOperator" class="mcaChatMsg mcaChatMsgInnerOperator_silver">
+							<div class="mcaChatMsgInner borderColorStrong_silver">
+								<div id="chatLabel" class="mcaName mcaColor_silver">Lucy</div>
+								<div id="chatText" class="mcaChatText">Hello how can I help you?</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mMsgContainer">
+					<div id="chatMessageNotification" class="mmPressEnter">Press enter to send message</div>
+					<div class="mmWriteMsgContainer">
+						<textarea id="chatMessageWriter" class="mmWriteMessageInput mmWriteMessageInput_silver"></textarea>
+					</div>
+				</div>
+				<div class="powBy">Powered by</div>
+				<div id="chatLogo" class="powLogo"  onclick="window.open(''http://yourchatsuport.com'');"></div>
+			</div>
+		</div>
+		<div class="stBottom stBottom_silver"></div>
+	</div>
+</div> ', NULL, 'silver_chat', 'chat_request', NULL,'1.0');
+
+
 
 INSERT INTO DOMAINS (domain_id, domain, description, account_id, visible_offline) VALUES
 (1, 'testweb.com', '', 1, 'Yes');

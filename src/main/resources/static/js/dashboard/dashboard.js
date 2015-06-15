@@ -88,6 +88,9 @@ function($,app,connectionManager,cometd)
         conn.on('OPERATORS_COUNT',function (message){
             app.refreshOperatorsCount(message);
         });
+        conn.on('VISITOR_CHAT_REQUEST',function (message){
+            app.newVisitorNotification(message);
+        });
 
         app.on('setLogoutStatus',function (){
             cometd.disconnect();

@@ -6,6 +6,7 @@ import org.cometd.bayeux.ChannelId;
 import org.cometd.bayeux.server.Authorizer;
 import org.cometd.bayeux.server.ServerMessage;
 import org.cometd.bayeux.server.ServerSession;
+import org.mylivedata.app.connection.domain.VisitorPrincipal;
 import org.mylivedata.app.dashboard.domain.custom.SecureUser;
 
 /**
@@ -57,8 +58,8 @@ public class DashboardUserAuthorizer  implements Authorizer  {
     @Override
     public Result authorize(Operation operation, ChannelId channel, ServerSession session, ServerMessage message) {
 
-        SecureUser secUser =  (SecureUser)session.getAttribute("secureUser");
-        if(!session.isLocalSession() && (secUser == null || !secUser.getAccountIdentity().equals(channel.toString().replace(channel.getParent()+"/",""))))
+        VisitorPrincipal secUser =  (VisitorPrincipal)session.getAttribute("user");
+        if(!session.isLocalSession() && (secUser == null || !secUser.getSecureUser().getAccountIdentity().equals(channel.toString().replace(channel.getParent()+"/",""))))
             return Result.ignore();
 
         if (_operations.contains(operation))

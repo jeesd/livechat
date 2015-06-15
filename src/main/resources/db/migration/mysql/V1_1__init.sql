@@ -115,6 +115,7 @@ CREATE TABLE IF NOT EXISTS `default_layouts` (
   `name` varchar(50) DEFAULT NULL,
   `fragment` varchar(50) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
+  `version` varchar(50),
   PRIMARY KEY (`layout_id`),
   UNIQUE KEY `Name_Fragment_IDX` (`name`,`fragment`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
