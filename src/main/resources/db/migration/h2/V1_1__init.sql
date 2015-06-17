@@ -294,6 +294,8 @@ INSERT INTO DEFAULT_LAYOUTS (layout_id, html, css, name, fragment, description, 
 
 INSERT INTO DOMAINS (domain_id, domain, description, account_id, visible_offline) VALUES
 (1, 'testweb.com', '', 1, 'Yes');
+INSERT INTO DOMAINS (domain_id, domain, description, account_id, visible_offline) VALUES
+(2, 'localhost', '', 1, 'Yes');
 
 INSERT INTO ASSOC_USER_GROUPS VALUES (1,1);
 

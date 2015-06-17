@@ -4,7 +4,7 @@
 if (typeof require === 'undefined') {
     var myChatSupportScript = document.createElement('script');
     myChatSupportScript.type = "text/javascript";
-    myChatSupportScript.src = "http://appchatserver.com:8080/js/templatejs/require.js";
+    myChatSupportScript.src = "//localhost:8080/js/templatejs/require.js";
     myChatSupportScript.onload = InitMyChatSupportLiveChat;
     myChatSupportScript.onreadystatechange = function () { if (this.readyState == 'complete' || this.readyState == 'loaded') InitMyChatSupportLiveChat(); }
     document.getElementsByTagName('head')[0].appendChild(myChatSupportScript);
@@ -22,7 +22,7 @@ function InitMyChatSupportLiveChat()
             return jQuery;
         });
         require.config({
-            baseUrl: '//appchatserver.com:8080/js/chat',
+            baseUrl: '//localhost:8080/js/chat',
             paths: {
                 org: '../jqs/org',
                 "jquery.cookie": '../templatejs/jquery.cookie',
@@ -38,7 +38,7 @@ function InitMyChatSupportLiveChat()
         console.log($.fn.jquery.split('.')[0]+' je jquery');
     }else{
         require.config({
-            baseUrl: '//appchatserver.com:8080/js/chat',
+            baseUrl: '//localhost:8080/js/chat',
             paths: {
                 '*': { 'jquery': 'jquery.noconflict' },
                 'jquery.noconflict': { 'jquery': 'jquery' },

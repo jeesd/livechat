@@ -1,6 +1,7 @@
 package org.mylivedata.app.configuration;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.mylivedata.app.configuration.resolver.DbTemplateResolver;
 import org.mylivedata.app.configuration.resource.DatabaseDrivenMessageSource;
@@ -14,7 +15,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -22,14 +25,34 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
+import redis.clients.jedis.Protocol;
+import redis.embedded.RedisServer;
+
+import java.io.IOException;
 import java.util.Locale;
 
 @Configuration
+@EnableAutoConfiguration
+@EnableRedisHttpSession
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Autowired
     private SpringTemplateEngine templateEngine;
+	
+	private static RedisServer redisServer;
 
+    @Bean
+    public JedisConnectionFactory connectionFactory() throws IOException {
+        redisServer = new RedisServer(Protocol.DEFAULT_PORT);
+        redisServer.start();
+        return new JedisConnectionFactory();
+    }
+
+    @PreDestroy
+    public void destroy() {
+        redisServer.stop();
+    }
+	
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();

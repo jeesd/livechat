@@ -51,9 +51,14 @@ public class ChatSecurity extends DefaultSecurityPolicy {
         Map<String, Object> ext = message.getExt();
         ServerMessage.Mutable handshakeReply = message.getAssociated();
         SecurityContext securityContext = (SecurityContext) server.getContext().getHttpSessionAttribute("SPRING_SECURITY_CONTEXT");
-
+        
+        Map<String, Object> clientData = (Map<String, Object>)ext.get("client");
+        boolean isDemoUser = false;
+        if(clientData != null && !clientData.isEmpty()){
+            isDemoUser = "true".equals(((String)clientData.get("isDemoUser")))?true:false;
+        }
         //if user is not authorized by spring security module then validate and create anonymous user for website chat
-       if (securityContext != null && securityContext.getAuthentication().isAuthenticated()) {
+       if (securityContext != null && securityContext.getAuthentication().isAuthenticated() && !isDemoUser) {
             SecureUser secUser = (SecureUser) securityContext.getAuthentication().getPrincipal();
             if(secUser != null && secUser.isUserInRole("ROLE_USER")){
                 // will validate if user have already active session if transport is not websocket.
@@ -74,7 +79,7 @@ public class ChatSecurity extends DefaultSecurityPolicy {
             }
         } else {
 
-            Map<String, Object> clientData = (Map<String, Object>)ext.get("client");
+            
             String accountID = null;
             String browserId = null;
 

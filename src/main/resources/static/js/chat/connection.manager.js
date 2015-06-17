@@ -410,9 +410,17 @@ define(['jquery'], function($){
 
 
     var CometBinding = function(cometd, liveCommunicator, urlParam) {
-
+    	var host = "localhost";
+    	if($("div[data-widget='mychatsupport']").attr("data-host")){
+    		host = $("div[data-widget='mychatsupport']").attr("data-host");
+        }
+    	var layout = "silver_chat";
+    	if($("div[data-widget='mychatsupport']").attr("data-layout")){
+    		layout = $("div[data-widget='mychatsupport']").attr("data-layout");
+        }
+    	
         var config = {
-            contextPath: $(location).attr('protocol')+'//appchatserver.com:'+($(location).attr('protocol')=='https:'?'8443':'8080')
+            contextPath: $(location).attr('protocol')+'//'+host+':'+($(location).attr('protocol')=='https:'?'8443':'8080')
         };
         var cometURL = config.contextPath+"/cometd";
 
@@ -423,7 +431,9 @@ define(['jquery'], function($){
         });
 
         var params = { };
-
+        
+        
+        
         if($("div[data-widget='mychatsupport']").attr("data-account-id")){
             params['accountId'] = $("div[data-widget='mychatsupport']").attr("data-account-id");
         }
@@ -433,7 +443,11 @@ define(['jquery'], function($){
         if($("div[data-widget='mychatsupport']").attr("data-language")){
             params['language'] = $("div[data-widget='mychatsupport']").attr("data-language");
         }
-
+        if($("div[data-widget='mychatsupport']").attr("data-demo")){
+            params['demo'] = $("div[data-widget='mychatsupport']").attr("data-demo");
+        }
+        
+        
         params['ci'] = liveCommunicator.clientId;
 
         var urlParams = "?"+$.param( params, true );
@@ -504,7 +518,7 @@ define(['jquery'], function($){
             liveCommunicator.connected = message.successful === true;
             if (!wasConnected && liveCommunicator.connected) {
                 cometd.remoteCall('/layout', {
-                    style: "silver_chat"
+                    style: layout
                 }, 5000, function(response)
                 {
                     if (response.successful)
@@ -541,10 +555,11 @@ define(['jquery'], function($){
 
         var languageCode =   $("div[data-widget='mychatsupport']").attr("data-language");
         var accountId = $("div[data-widget='mychatsupport']").attr("data-account-id");
+        var isDemo = $("div[data-widget='mychatsupport']").attr("data-demo");
 
         $.ajax({
             type : "GET",
-            url  : config.contextPath+"/chat/template/html/silver_chat/chat_bar_offline"+urlParams,
+            url  : config.contextPath+"/chat/template/html/"+layout+"/chat_bar_offline"+urlParams,
             xhrFields: {
                 withCredentials: true
             },
@@ -571,7 +586,8 @@ define(['jquery'], function($){
                             accountID: accountId,
                             BID: $.cookie("BID"),
                             lang: languageCode,
-                            wh: $( window ).width()+"x"+$( window ).height()
+                            wh: $( window ).width()+"x"+$( window ).height(),
+                            isDemoUser: isDemo
                         }
                     }
                 });
