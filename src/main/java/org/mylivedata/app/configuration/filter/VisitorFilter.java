@@ -50,11 +50,11 @@ public class VisitorFilter extends GenericFilterBean {
 
                 String uuid = UUID.randomUUID().toString();
                 userIdentityHash = uuid;
-                Cookie cookie = new Cookie("cuhi",uuid);
-                cookie.setMaxAge(68800000);
+                Cookie cookie = new Cookie("cuhi",userIdentityHash);
+                cookie.setMaxAge(28800000);
                 cookie.setHttpOnly(true);
                 ((HttpServletResponse) response).addCookie(cookie);
-                session.setAttribute("cuhi",uuid);
+
             }
             session.setAttribute("userIdentityHash",userIdentityHash);
             //principal.setUserHashId(userIdentityHash);

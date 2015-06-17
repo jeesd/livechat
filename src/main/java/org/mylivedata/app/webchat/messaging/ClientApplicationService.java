@@ -6,11 +6,14 @@ import org.cometd.annotation.Service;
 import org.cometd.annotation.Session;
 import org.cometd.bayeux.client.ClientSessionChannel;
 import org.cometd.bayeux.server.BayeuxServer;
+import org.cometd.bayeux.server.ServerChannel;
 import org.cometd.bayeux.server.ServerMessage;
 import org.cometd.bayeux.server.ServerSession;
 import org.mylivedata.app.connection.MessageType;
 import org.mylivedata.app.connection.domain.VisitorPrincipal;
 import org.mylivedata.app.dashboard.messaging.DashboardService;
+import org.mylivedata.app.util.SessionUtils;
+import org.mylivedata.app.webchat.domain.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -32,7 +35,8 @@ public class ClientApplicationService
     private ServerSession serverSession;
     @Autowired
     private DashboardService dashboardService;
-
+    @Autowired
+    private SessionUtils sessionUtils;
 
     @PostConstruct
     public void init()
@@ -65,15 +69,16 @@ public class ClientApplicationService
         VisitorPrincipal user = (VisitorPrincipal)remote.getAttribute("user");
         Map<String, Object> messageResp = new HashMap<String, Object>();
         messageResp.put("type", MessageType.VISITOR_CHAT_REQUEST);
-        message.put("id", UUID.randomUUID().toString());
-        message.put("userID", user.getSecureUser().getId());
-        message.put("userName", user.getSecureUser().getFirstName());
-        message.put("data", user.getSecureUser().getFirstName());
+        messageResp.put("id", UUID.randomUUID().toString());
+        messageResp.put("userID", user.getSecureUser().getId());
+        messageResp.put("userName", user.getSecureUser().getFirstName());
+        messageResp.put("data", user.getSecureUser().getFirstName());
 
-        dashboardService.sendMessageToChannel("/visitor/"+user.getSecureUser().getAccountIdentity(),message);
+        sessionUtils.changeUserStatus(user.getSecureUser(),UserStatus.REQUEST_CHAT);
 
-        //ClientSessionChannel channel = remote.getLocalSession().getChannel("/visitor/"+user.getSecureUser().getAccountIdentity());
-        //channel.publish(message);
+        dashboardService.sendMessageToChannel("/visitor/"+user.getSecureUser().getAccountIdentity(),messageResp);
+
+
     }
 
 }

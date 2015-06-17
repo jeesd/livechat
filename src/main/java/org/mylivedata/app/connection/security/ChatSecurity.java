@@ -135,6 +135,7 @@ public class ChatSecurity extends DefaultSecurityPolicy {
         visitorPrincipal.setRemoteAddress(server.getContext().getRemoteAddress().getHostString());
         visitorPrincipal.setAccountIdHash((String)clientData.get("accountID"));
         visitorPrincipal.setScreenWH((String)clientData.get("wh"));
+        visitorPrincipal.setUserHashId((String)server.getContext().getHttpSessionAttribute("userIdentityHash"));
         visitorPrincipal.setSecureUser(userService.getSecureUserByHash(visitorPrincipal));
         //addUserIntoCache(visitorPrincipal,server);
         return visitorPrincipal;

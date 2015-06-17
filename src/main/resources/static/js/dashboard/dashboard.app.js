@@ -252,7 +252,7 @@ define(['jquery','visitor_list','profile','layout'], function($,visitorList,prof
             title: '<i class="fa fa-check-circle"></i> '+title,
             text: text,
             sticky: false,
-            time: '',
+            time: '20000',
             class_name: 'gritter-success'
         });
         return false;

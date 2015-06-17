@@ -18,7 +18,8 @@ public interface UsersEntityRepository extends JpaRepository<UsersEntity, Intege
     List<UsersEntity> findByIdentificationHash(String hash);
     List<UsersEntity> findByNameAndAccountId(String name, int accountId);
     UsersEntity findByUserId(int id);
-    
+    UsersEntity findOne(Integer id);
+
     @Modifying
     @Query("Update UsersEntity t SET t.name=:name, t.surrname=:surrname, t.email=:email WHERE t.userId=:userId")
     public void updateUserProfile(@Param("userId") int userId, @Param("name") String name, @Param("surrname") String surrname, 

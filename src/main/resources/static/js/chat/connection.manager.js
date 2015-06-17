@@ -316,6 +316,20 @@ define(['jquery'], function($){
         console.log('Connection closed');
     };
 
+    LiveCommunicator.prototype.widgetSetState = function (state) {
+        var self = this;
+        switch (state) {
+            case 'ONLINE':
+                self.widgetOnlineState();
+                break;
+            case 'REQUEST_CHAT':
+                self.widgetRequestState();
+                break;
+            default:
+                self.widgetOnlineState();
+        }
+    };
+
     LiveCommunicator.prototype.widgetOnlineState = function () {
         console.log('Online state setup');
         var self = this;
@@ -332,6 +346,7 @@ define(['jquery'], function($){
 
         $("div[data-widget='mychatsupport']").on('click', function(){
             self.widgetRequestState();
+            self.emit('request',' ');
         });
 
     };
@@ -349,8 +364,6 @@ define(['jquery'], function($){
                 height: "easeOutBounce"
             }
         });
-
-        self.emit('request',' ');
 
         $("div[data-widget='mychatsupport']").on('click', function(){
             cometd.publish('/client/info', { department: $("div[data-widget='mychatsupport']").attr("data-department") });
@@ -499,7 +512,7 @@ define(['jquery'], function($){
                         // The action was performed
                         var data = response.data;
                         liveCommunicator.widget = data;
-                        liveCommunicator.widgetOnlineState();
+                        liveCommunicator.widgetSetState(data.status);
                         //localStorage.setItem("ChatWidget",JSON.stringify(data));
 
                     }

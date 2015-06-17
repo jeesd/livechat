@@ -38,7 +38,7 @@ public class SessionServiceImpl implements SessionService {
         if(ipArray.length == 4){
             decimalIpForm = ipToInt(ipArray);
         }
-        Ip2LocationDb11Entity geoData = ip2LocationDb11Repository.findGeoLocation(decimalIpForm);
+        Ip2LocationDb11Entity geoData = ip2LocationDb11Repository.findGeoLocation(new Long(decimalIpForm));
         if(geoData != null) {
             session.setCountryCode(geoData.getCountryCode());
             session.setCountryName(geoData.getCountryName());

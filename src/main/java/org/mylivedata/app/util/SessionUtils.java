@@ -234,6 +234,27 @@ public class SessionUtils {
         return chatUser;
     }
 
+    public ChatUser changeUserStatus (SecureUser ud, UserStatus status) {
+        cacheManager.getCacheManager().getTransactionController().begin();
+        ChatUser chatUser = (ChatUser)cache.get(ud.getId()).get();
+        if(chatUser != null){
+            chatUser.setStatus(status);
+        }
+        cache.put(chatUser.getUserId(),chatUser);
+        cacheManager.getCacheManager().getTransactionController().commit();
+        return chatUser;
+    }
+
+    public UserStatus getChatUserStatus (SecureUser ud) {
+        cacheManager.getCacheManager().getTransactionController().begin();
+        ChatUser chatUser = (ChatUser)cache.get(ud.getId()).get();
+        if(chatUser != null){
+            return chatUser.getStatus();
+        }
+        cacheManager.getCacheManager().getTransactionController().commit();
+        return null;
+    }
+
     public void removeChatUser (ChatUser chatUser) {
         try {
             cacheManager.getCacheManager().getTransactionController().begin();

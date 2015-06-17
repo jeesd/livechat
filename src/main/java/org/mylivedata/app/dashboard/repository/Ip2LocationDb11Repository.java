@@ -13,5 +13,5 @@ import org.springframework.data.repository.query.Param;
 public interface Ip2LocationDb11Repository extends JpaRepository<Ip2LocationDb11Entity, Ip2LocationDb11EntityPK> {
 
     @Query("select t from Ip2LocationDb11Entity t WHERE t.ipFrom <= :ip AND t.ipTo >= :ip")
-    Ip2LocationDb11Entity findGeoLocation(@Param("ip") int ip);
+    Ip2LocationDb11Entity findGeoLocation(@Param("ip") Long ip);
 }

@@ -2,6 +2,8 @@ package org.mylivedata.app.webchat.messaging;
 
 import org.cometd.annotation.RemoteCall;
 import org.cometd.annotation.Service;
+import org.mylivedata.app.connection.domain.VisitorPrincipal;
+import org.mylivedata.app.util.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,8 @@ public class RemoteCallService {
     
     @Autowired
     private SpringTemplateEngine templateEngine;
+    @Autowired
+    private SessionUtils sessionUtils;
     
     @RemoteCall("layout")
     public void retrieveLayout(final RemoteCall.Caller caller, final Object data)
@@ -38,6 +42,7 @@ public class RemoteCallService {
             {
                 try
                 {
+                    VisitorPrincipal user = (VisitorPrincipal)caller.getServerSession().getAttribute("user");
                     Map<String, Object> arguments = (Map<String, Object>)data;
                     String style = (String)arguments.get("style");
                     String component = (String)arguments.get("component");
@@ -48,7 +53,7 @@ public class RemoteCallService {
                     widget.put("chat_bar_offline",templateEngine.process("db:html:"+style+":chat_bar_offline", ctx));
                     widget.put("chat_bar_online",templateEngine.process("db:html:"+style+":chat_bar_online", ctx));
                     widget.put("chat_request",templateEngine.process("db:html:"+style+":chat_request", ctx));
-
+                    widget.put("status",sessionUtils.getChatUserStatus(user.getSecureUser()));
                     // We got the contacts, respond.
                     caller.result(widget);
                 }

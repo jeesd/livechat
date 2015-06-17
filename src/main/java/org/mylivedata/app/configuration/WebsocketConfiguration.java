@@ -117,7 +117,6 @@ public class WebsocketConfiguration implements DestructionAwareBeanPostProcessor
 	        @Override
 	        public void onStartup(ServletContext servletContext) throws ServletException {
 	            servletContext.setAttribute(BayeuxServer.ATTRIBUTE, bayeuxServer(servletContext));
-                
 	        }
 	    };
 	}
